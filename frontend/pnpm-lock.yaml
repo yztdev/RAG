@@ -108,6 +108,9 @@ importers:
       '@iconify/json':
         specifier: 2.2.337
         version: 2.2.337
+      '@iconify/utils':
+        specifier: 2.3.0
+        version: 2.3.0
       '@sa/scripts':
         specifier: workspace:*
         version: link:packages/scripts

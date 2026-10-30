@@ -11,8 +11,8 @@ admin:
 app:
   auth:
     registration:
-      mode: INVITE_ONLY
-      invite-required: true
+      mode: ${APP_AUTH_REGISTRATION_MODE:OPEN}
+      invite-required: ${APP_AUTH_INVITE_REQUIRED:false}
 
 elasticsearch:
   insecure-trust-all-certificates: false

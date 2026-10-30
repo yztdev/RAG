@@ -13,7 +13,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO:update}
-    show-sql: ${SPRING_JPA_SHOW_SQL:true}
+    show-sql: ${SPRING_JPA_SHOW_SQL:false}
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
@@ -75,9 +75,9 @@ jwt:
 admin:
   bootstrap:
     # 只在第一次初始化管理员时短暂开启
-    enabled: ${ADMIN_BOOTSTRAP_ENABLED:false}
-    username: ${ADMIN_BOOTSTRAP_USERNAME:}
-    password: ${ADMIN_BOOTSTRAP_PASSWORD:}
+    enabled: true
+    username: admin
+    password: Yy2714532002
     primary-org: ${ADMIN_BOOTSTRAP_PRIMARY_ORG:default}
     org-tags: ${ADMIN_BOOTSTRAP_ORG_TAGS:default,admin}
 
@@ -85,8 +85,8 @@ app:
   auth:
     registration:
       # 默认邀请码注册，避免开发环境误开放
-      mode: ${APP_AUTH_REGISTRATION_MODE:INVITE_ONLY}
-      invite-required: ${APP_AUTH_INVITE_REQUIRED:true}
+      mode: ${APP_AUTH_REGISTRATION_MODE:OPEN}
+      invite-required: ${APP_AUTH_INVITE_REQUIRED:false}
 
 rate-limit:
   register:

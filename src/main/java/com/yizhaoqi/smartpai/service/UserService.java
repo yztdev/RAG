@@ -102,9 +102,6 @@ public class UserService {
             throw new CustomException("Username already exists", HttpStatus.BAD_REQUEST);
         }
         
-        // 确保默认组织标签存在（系统内部使用）
-        ensureDefaultOrgTagExists();
-        
         User user = new User();
         user.setUsername(username);
         // 对密码进行加密处理并设置到 User 对象中
@@ -114,6 +111,9 @@ public class UserService {
         
         // 保存用户以生成ID
         userRepository.save(user);
+
+        // 默认组织必须有创建者；没有管理员时使用当前新用户。
+        ensureDefaultOrgTagExists(user);
         
         // 创建用户的私人组织标签
         String privateTagId = PRIVATE_TAG_PREFIX + username;
@@ -172,7 +172,7 @@ public class UserService {
     /**
      * 确保默认组织标签存在
      */
-    private void ensureDefaultOrgTagExists() {
+    private void ensureDefaultOrgTagExists(User registeringUser) {
         if (!organizationTagRepository.existsByTagId(DEFAULT_ORG_TAG)) {
             logger.info("Creating default organization tag");
             
@@ -181,8 +181,7 @@ public class UserService {
                     .filter(user -> User.Role.ADMIN.equals(user.getRole()))
                     .findFirst();
 
-            User creator = adminUser.orElseThrow(
-                    () -> new CustomException("No admin user exists to initialize default organization tag", HttpStatus.INTERNAL_SERVER_ERROR));
+            User creator = adminUser.orElse(registeringUser);
             
             // 创建默认组织标签
             OrganizationTag defaultTag = new OrganizationTag();

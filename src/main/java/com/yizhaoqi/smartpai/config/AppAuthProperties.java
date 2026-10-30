@@ -15,8 +15,8 @@ public class AppAuthProperties {
     }
 
     public static class Registration {
-        private RegistrationMode mode = RegistrationMode.INVITE_ONLY;
-        private boolean inviteRequired = true;
+        private RegistrationMode mode = RegistrationMode.OPEN;
+        private boolean inviteRequired = false;
 
         public RegistrationMode getMode() {
             return mode;

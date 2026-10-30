@@ -75,7 +75,7 @@ public class FileProcessingRecoveryJob {
                 if (fileUploadRepository.failStaleVectorization(file.getId(), file.getHeartbeatAt(), LEGACY_TASK_MESSAGE, now) == 1) {
                     handled++;
                     statusNotifier.notifyChanged(file.getId());
-                    logger.warn("升级前中断的历史向量化任务，已标记失败不再自动重投: fileMd5={}, fileUploadId={}, lastUpdated={}",
+                    logger.warn("[文件处理] 升级前中断的历史向量化任务，已标记失败不再自动重投: fileMd5={}, fileUploadId={}, lastUpdated={}",
                             file.getFileMd5(), file.getId(), file.getMergedAt());
                 }
                 continue;
@@ -85,7 +85,7 @@ public class FileProcessingRecoveryJob {
                 if (fileUploadRepository.failStaleVectorization(file.getId(), file.getHeartbeatAt(), message, now) == 1) {
                     handled++;
                     statusNotifier.notifyChanged(file.getId());
-                    logger.error("[ALERT] 向量化任务多次卡住，已标记失败: fileMd5={}, fileUploadId={}, retryCount={}, lastHeartbeat={}",
+                    logger.error("[文件处理] 向量化任务多次卡住，已标记失败: fileMd5={}, fileUploadId={}, retryCount={}, lastHeartbeat={}",
                             file.getFileMd5(), file.getId(), file.getRetryCount(), file.getHeartbeatAt());
                 }
                 continue;
@@ -101,7 +101,7 @@ public class FileProcessingRecoveryJob {
             if (Boolean.TRUE.equals(requeued)) {
                 handled++;
                 statusNotifier.notifyChanged(file.getId());
-                logger.warn("向量化任务心跳超时，已改回待处理并重新投递: fileMd5={}, fileUploadId={}, retryCount={}, lastHeartbeat={}",
+                logger.warn("[文件处理] 向量化任务心跳超时，已安排重新投递: fileMd5={}, fileUploadId={}, retryCount={}, lastHeartbeat={}",
                         file.getFileMd5(), file.getId(), file.getRetryCount() + 1, file.getHeartbeatAt());
             }
         }
@@ -121,7 +121,7 @@ public class FileProcessingRecoveryJob {
                     file.getId(), FileUpload.STATUS_MERGING, FileUpload.STATUS_UPLOADING, file.getHeartbeatAt(), now);
             if (updated == 1) {
                 handled++;
-                logger.warn("合并超时，已改回上传中: fileMd5={}, userId={}, fileUploadId={}, mergeStartedAt={}",
+                logger.warn("[文件处理] 文件合并超时，已恢复为上传中: fileMd5={}, userId={}, fileUploadId={}, mergeStartedAt={}",
                         file.getFileMd5(), file.getUserId(), file.getId(), file.getHeartbeatAt());
             }
         }
@@ -141,7 +141,7 @@ public class FileProcessingRecoveryJob {
             }
             handled++;
             uploadService.cleanupAbandonedChunks(file.getFileMd5(), file.getUserId());
-            logger.info("已清理废弃上传: fileMd5={}, userId={}, fileName={}, lastHeartbeat={}",
+            logger.info("[文件处理] 已清理废弃上传: fileMd5={}, userId={}, fileName={}, lastHeartbeat={}",
                     file.getFileMd5(), file.getUserId(), file.getFileName(), file.getHeartbeatAt());
         }
         return handled;
@@ -167,10 +167,10 @@ public class FileProcessingRecoveryJob {
         try {
             int handled = step.getAsInt();
             if (handled > 0) {
-                logger.info("{}完成，本轮处理 {} 条", name, handled);
+                logger.info("[文件处理] {}完成，本轮处理 {} 条", name, handled);
             }
         } catch (Exception e) {
-            logger.error("{}执行失败: {}", name, e.getMessage(), e);
+            logger.error("[文件处理] {}执行失败: {}", name, e.getMessage(), e);
         }
     }
 

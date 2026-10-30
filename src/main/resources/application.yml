@@ -13,7 +13,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO:update}
-    show-sql: ${SPRING_JPA_SHOW_SQL:true}
+    show-sql: ${SPRING_JPA_SHOW_SQL:false}
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
@@ -95,8 +95,8 @@ app:
       # OPEN: 开放注册
       # INVITE_ONLY: 必须邀请码
       # CLOSED: 完全关闭注册
-      mode: ${APP_AUTH_REGISTRATION_MODE:INVITE_ONLY}
-      invite-required: ${APP_AUTH_INVITE_REQUIRED:true}
+      mode: ${APP_AUTH_REGISTRATION_MODE:OPEN}
+      invite-required: ${APP_AUTH_INVITE_REQUIRED:false}
 
 rate-limit:
   # Redis 限流，用于保护登录、注册、聊天、LLM 和向量接口
@@ -241,7 +241,7 @@ aliyun:
 knowledge:
   bootstrap:
     enabled: ${KNOWLEDGE_BOOTSTRAP_ENABLED:true}
-    path: ${KNOWLEDGE_BOOTSTRAP_PATH:docs/paismart.pdf}
+    path: ${KNOWLEDGE_BOOTSTRAP_PATH:docs/nature.pdf}
     org-tag: ${KNOWLEDGE_BOOTSTRAP_ORG_TAG:default}
     public: ${KNOWLEDGE_BOOTSTRAP_PUBLIC:true}
     user-id: ${KNOWLEDGE_BOOTSTRAP_USER_ID:system-bootstrap}

@@ -110,7 +110,7 @@ public class FileProcessingOutboxService {
         try {
             due = outboxRepository.findDue(now(), PageRequest.of(0, Math.max(properties.getOutbox().getBatchSize(), 1)));
         } catch (Exception e) {
-            logger.warn("查询待补发的文件处理消息失败: {}", e.getMessage());
+            logger.warn("[任务投递] 查询待投递任务失败: {}", e.getMessage());
             return;
         }
         for (FileProcessingOutbox outbox : due) {
@@ -156,17 +156,17 @@ public class FileProcessingOutboxService {
                 }
             });
             outboxRepository.markSent(outbox.getId(), now());
-            logger.info("文件处理任务已投递: outboxId={}, fileMd5={}, taskType={}", outbox.getId(), outbox.getFileMd5(), outbox.getTaskType());
+            logger.info("[任务投递] 文件处理任务已投递: outboxId={}, fileMd5={}, taskType={}", outbox.getId(), outbox.getFileMd5(), outbox.getTaskType());
             return true;
         } catch (Exception e) {
             int attempts = outbox.getAttempts() + 1;
             LocalDateTime nextAttemptAt = now().plusSeconds(backoffSeconds(attempts));
             outboxRepository.markAttemptFailed(outbox.getId(), nextAttemptAt, truncate(e.getMessage()));
             if (attempts >= ALERT_ATTEMPTS) {
-                logger.error("[ALERT] 文件处理任务多次投递 Kafka 失败: outboxId={}, fileMd5={}, attempts={}, nextAttemptAt={}, error={}",
+                logger.error("[任务投递] 文件处理任务多次投递 Kafka 失败: outboxId={}, fileMd5={}, attempts={}, nextAttemptAt={}, error={}",
                         outbox.getId(), outbox.getFileMd5(), attempts, nextAttemptAt, e.getMessage());
             } else {
-                logger.warn("文件处理任务投递 Kafka 失败，稍后补发: outboxId={}, fileMd5={}, attempts={}, nextAttemptAt={}, error={}",
+                logger.warn("[任务投递] 文件处理任务投递 Kafka 失败，将按计划重试: outboxId={}, fileMd5={}, attempts={}, nextAttemptAt={}, error={}",
                         outbox.getId(), outbox.getFileMd5(), attempts, nextAttemptAt, e.getMessage());
             }
             return false;

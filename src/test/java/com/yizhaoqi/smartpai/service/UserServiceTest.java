@@ -147,18 +147,19 @@ class UserServiceTest {
     }
 
     @Test
-    void testEnsureDefaultOrgRequiresAdminWhenMissing() {
+    void testRegisterWithoutAdminCreatesDefaultOrganization() {
         when(userRepository.findByUsername("testuser")).thenReturn(Optional.empty());
-        when(registration.getMode()).thenReturn(RegistrationMode.OPEN);
-        when(registration.isInviteRequired()).thenReturn(false);
-
         when(organizationTagRepository.existsByTagId("DEFAULT")).thenReturn(false);
         when(userRepository.findAll()).thenReturn(List.of());
 
-        CustomException exception = assertThrows(CustomException.class,
-                () -> userService.registerUser("testuser", "password123", null));
+        userService.registerUser("testuser", "password123", null);
 
-        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, exception.getStatus());
+        ArgumentCaptor<OrganizationTag> tags = ArgumentCaptor.forClass(OrganizationTag.class);
+        verify(organizationTagRepository, atLeastOnce()).save(tags.capture());
+        OrganizationTag defaultTag = tags.getAllValues().stream()
+                .filter(tag -> "DEFAULT".equals(tag.getTagId())).findFirst().orElseThrow();
+        assertEquals("testuser", defaultTag.getCreatedBy().getUsername());
+        assertEquals(User.Role.USER, defaultTag.getCreatedBy().getRole());
     }
 
     @Test
