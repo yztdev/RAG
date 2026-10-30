@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 派聪明（PaiSmart）是一个企业级的 AI 知识库管理系统，采用检索增强生成（RAG）技术，提供智能文档处理和检索能力。
 
 核心技术栈包括 ElasticSearch、Kafka、WebSocket、Spring Security、Docker、MySQL 和 Redis。
@@ -206,8 +205,3 @@ frontend/
 - `GET /api/v1/admin/eval/runs/{runId}/human-reviews` 查看人工判定和评委与人工一致率
 
 同一时间只运行一个评测任务，任务状态保存在内存里（最近 20 个），报告文件保存在磁盘上。
-
-**评委校准**：评委模型有自己的偏差，要定期抽一批让人工也判一遍。人工判定保存在报告旁边的 `{报告文件名}.human-reviews.json` 里，报告文件本身不改，重启后按 runId 在 `eval.output-dir` 里找回。只比较评委和人工都给出 `correct` 的用例，计算一致率和 Cohen's kappa（扣掉碰巧一致的部分，正确率很高或很低时一致率会虚高）；人工也打了分的用例额外给出评委分与人工分的平均绝对差。结果挂在任务状态的 `humanAgreement` 上：一致率低于 `min-agreement-rate`（或 kappa 低于 `min-kappa`）时 `status` 为 `NEEDS_RECALIBRATION` 并带 `warning`，说明评分标准要改或者评委模型已经不可靠，本次准确率和平均分不能直接采信，`disagreementCaseIds` 列出分歧用例。
-=======
-# RAG-
->>>>>>> 8d366527282ff4fa6af69ca40b1a8beffa98b34a
