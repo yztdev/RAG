@@ -74,7 +74,7 @@ public class RechargeService {
             amount = rechargePackage.getPackagePrice();
             llmToken = rechargePackage.getLlmToken();
             embeddingToken = rechargePackage.getEmbeddingToken();
-            description = "【派聪明】充值套餐：" + rechargePackage.getPackageName();
+            description = "【RAG知识库】充值套餐：" + rechargePackage.getPackageName();
         } else {
             // 自定义充值
             if (customAmount == null || customAmount <= 0) {
@@ -86,7 +86,7 @@ public class RechargeService {
             // 自定义充值按内部 1 分钱基准套餐折算 token 数量。
             llmToken = amount * rechargePackage.getLlmToken();
             embeddingToken = amount * rechargePackage.getEmbeddingToken();
-            description = "【派聪明】自定义充值￥" + PriceUtil.toYuanPrice(amount) + "元";
+            description = "【RAG知识库】自定义充值￥" + PriceUtil.toYuanPrice(amount) + "元";
         }
 
         // 2. 生成业务单号

@@ -8,7 +8,7 @@ node scripts/chat-reconnect-smoke-test.mjs
 
 Default behavior:
 
-- logs in with `admin / PaiSmart2026!`
+- logs in with `admin / RAG知识库2026!`
 - opens a first WebSocket connection
 - sends a long prompt that should stream for a while
 - closes the first socket after a few chunks to simulate user disconnect
@@ -43,7 +43,7 @@ Custom credentials:
 ```bash
 node scripts/chat-reconnect-smoke-test.mjs \
   --username admin \
-  --password PaiSmart2026!
+  --password RAG知识库2026!
 ```
 
 Useful options:

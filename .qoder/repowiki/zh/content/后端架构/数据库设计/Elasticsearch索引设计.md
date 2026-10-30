@@ -25,7 +25,7 @@
 11. [结论](#结论)
 
 ## 引言
-本文档深入解析PaiSmart知识库的Elasticsearch索引结构设计，基于`knowledge_base.json`配置文件详细说明index、type、analyzer等核心配置项。阐述EsDocument实体与ES文档的映射关系，以及TextChunk文本分块在向量检索中的作用。解释keyword、text等字段类型的选用依据，分析ngram分词器在模糊搜索中的优化效果。提供索引mapping结构图，说明评分机制、高亮显示和聚合分析的配置策略，确保全文检索的准确性和性能。
+本文档深入解析RAG知识库知识库的Elasticsearch索引结构设计，基于`knowledge_base.json`配置文件详细说明index、type、analyzer等核心配置项。阐述EsDocument实体与ES文档的映射关系，以及TextChunk文本分块在向量检索中的作用。解释keyword、text等字段类型的选用依据，分析ngram分词器在模糊搜索中的优化效果。提供索引mapping结构图，说明评分机制、高亮显示和聚合分析的配置策略，确保全文检索的准确性和性能。
 
 ## 核心配置解析
 Elasticsearch索引的核心配置位于`src/main/resources/es-mappings/knowledge_base.json`文件中，该文件定义了知识库索引的完整mapping结构。配置文件通过JSON格式精确描述了每个字段的数据类型、分析器、索引选项等属性。
@@ -155,7 +155,7 @@ I --> J[Elasticsearch存储]
 - [application.yml](file://src/main/resources/application.yml)
 
 ## 字段类型设计
-字段类型的选择直接影响检索性能和准确性。PaiSmart根据字段特性选择了合适的类型。
+字段类型的选择直接影响检索性能和准确性。RAG知识库根据字段特性选择了合适的类型。
 
 **字段类型选用依据**：
 
@@ -180,7 +180,7 @@ I --> J[Elasticsearch存储]
 - [knowledge_base.json](file://src/main/resources/es-mappings/knowledge_base.json)
 
 ## 分词器与模糊搜索
-分词器是实现中文全文检索的关键。PaiSmart使用IK分词器优化中文搜索体验。
+分词器是实现中文全文检索的关键。RAG知识库使用IK分词器优化中文搜索体验。
 
 **分词器配置**：
 ```json
@@ -246,7 +246,7 @@ boolean isPublic
 - [knowledge_base.json](file://src/main/resources/es-mappings/knowledge_base.json)
 
 ## 评分与重打分机制
-PaiSmart采用混合检索策略，结合向量相似度和关键词匹配，通过重打分机制优化排序。
+RAG知识库采用混合检索策略，结合向量相似度和关键词匹配，通过重打分机制优化排序。
 
 **HybridSearchService中的评分配置**：
 ```java
@@ -332,4 +332,4 @@ s.rescore(r -> r
 - `userId`、`orgTag`、`isPublic`等字段已配置为`keyword`或`boolean`，可直接用于聚合。
 
 ## 结论
-PaiSmart知识库的Elasticsearch索引设计充分考虑了全文检索、向量检索和权限控制的需求。通过合理的字段类型选择、分词器配置和混合检索策略，实现了高效准确的搜索功能。文本分块和向量化处理为语义搜索提供了基础，而重打分机制则平衡了语义相关性和关键词匹配。未来可进一步优化ngram分词器以增强模糊搜索能力，并开发聚合分析功能以提供数据洞察。
+RAG知识库知识库的Elasticsearch索引设计充分考虑了全文检索、向量检索和权限控制的需求。通过合理的字段类型选择、分词器配置和混合检索策略，实现了高效准确的搜索功能。文本分块和向量化处理为语义搜索提供了基础，而重打分机制则平衡了语义相关性和关键词匹配。未来可进一步优化ngram分词器以增强模糊搜索能力，并开发聚合分析功能以提供数据洞察。

@@ -2,18 +2,18 @@
   "name": "pi-smart",
   "type": "module",
   "version": "1.3.13",
-  "description": "PaiSmart",
+  "description": "RAG知识库",
   "author": {
-    "name": "PaiSmart",
-    "url": "https://github.com/itwanger/PaiSmart.git"
+    "name": "RAG知识库",
+    "url": "https://github.com/itwanger/RAG知识库.git"
   },
   "license": "MIT",
-  "homepage": "https://github.com/itwanger/PaiSmart.git",
+  "homepage": "https://github.com/itwanger/RAG知识库.git",
   "repository": {
-    "url": "https://github.com/itwanger/PaiSmart.git"
+    "url": "https://github.com/itwanger/RAG知识库.git"
   },
   "bugs": {
-    "url": "https://github.com/itwanger/PaiSmart/issues"
+    "url": "https://github.com/itwanger/RAG知识库/issues"
   },
   "keywords": [
     "ai",
@@ -119,5 +119,5 @@
     "commit-msg": "pnpm sa git-commit-verify",
     "pre-commit": "cd frontend && pnpm typecheck && pnpm lint && git diff --exit-code"
   },
-  "website": "https://github.com/itwanger/PaiSmart.git"
+  "website": "https://github.com/itwanger/RAG知识库.git"
 }

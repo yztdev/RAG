@@ -31,7 +31,7 @@ read_env_value() {
 SERVER_HOST="${DEPLOY_SERVER_HOST:-${SERVER_HOST:-$(read_env_value DEPLOY_SERVER_HOST)}}"
 SERVER_USER="${DEPLOY_SERVER_USER:-${SERVER_USER:-$(read_env_value DEPLOY_SERVER_USER root)}}"
 SERVER_KEY="${DEPLOY_SERVER_KEY:-${SERVER_KEY:-$(read_env_value DEPLOY_SERVER_KEY)}}"
-TARGET_DIR="${DEPLOY_TARGET_DIR:-${TARGET_DIR:-$(read_env_value DEPLOY_TARGET_DIR /home/www/PaiSmart-Front)}}"
+TARGET_DIR="${DEPLOY_TARGET_DIR:-${TARGET_DIR:-$(read_env_value DEPLOY_TARGET_DIR /home/www/RAG知识库-Front)}}"
 BUILD_CMD="${DEPLOY_BUILD_CMD:-${BUILD_CMD:-$(read_env_value DEPLOY_BUILD_CMD 'pnpm build')}}"
 SKIP_BUILD="${DEPLOY_SKIP_BUILD:-${SKIP_BUILD:-$(read_env_value DEPLOY_SKIP_BUILD 0)}}"
 HEALTHCHECK_URL="${DEPLOY_HEALTHCHECK_URL:-${HEALTHCHECK_URL:-$(read_env_value DEPLOY_HEALTHCHECK_URL https://smart.paicoding.com)}}"

@@ -21,10 +21,10 @@
 9. [结论](#结论)
 
 ## 引言
-本文档详细说明了PaiSmart项目中WebSocket的配置实现，重点解析了WebSocketConfig类中的端点注册、消息转换器配置和跨域策略设置。文档阐述了STOMP协议的集成方式与SockJS的降级支持机制，确保在不同网络环境下的连接兼容性。同时，解释了WebSocket路径映射规则、握手拦截器的实现逻辑以及如何通过自定义HandshakeInterceptor注入用户会话信息。最后，提供了性能调优建议，包括缓冲区大小、并发连接数限制和心跳间隔配置，确保高并发场景下的稳定通信。
+本文档详细说明了RAG知识库项目中WebSocket的配置实现，重点解析了WebSocketConfig类中的端点注册、消息转换器配置和跨域策略设置。文档阐述了STOMP协议的集成方式与SockJS的降级支持机制，确保在不同网络环境下的连接兼容性。同时，解释了WebSocket路径映射规则、握手拦截器的实现逻辑以及如何通过自定义HandshakeInterceptor注入用户会话信息。最后，提供了性能调优建议，包括缓冲区大小、并发连接数限制和心跳间隔配置，确保高并发场景下的稳定通信。
 
 ## 项目结构
-PaiSmart项目的WebSocket相关代码主要分布在后端的`src/main/java/com/yizhaoqi/smartpai`目录下，包括配置、处理器、服务和工具类。前端的WebSocket测试页面位于`src/main/resources/static/test.html`中，用于验证WebSocket功能。
+RAG知识库项目的WebSocket相关代码主要分布在后端的`src/main/java/com/yizhaoqi/smartpai`目录下，包括配置、处理器、服务和工具类。前端的WebSocket测试页面位于`src/main/resources/static/test.html`中，用于验证WebSocket功能。
 
 ```mermaid
 graph TD
@@ -54,7 +54,7 @@ testHtml --> WebSocketConfig : "连接"
 - [test.html](file://src/main/resources/static/test.html#L500-L700)
 
 ## 核心组件
-PaiSmart的WebSocket实现由几个核心组件构成：`WebSocketConfig`负责配置和注册WebSocket处理器，`ChatWebSocketHandler`处理WebSocket的连接、消息和关闭事件，`ChatHandler`处理业务逻辑，`JwtUtils`用于解析JWT令牌以提取用户信息。
+RAG知识库的WebSocket实现由几个核心组件构成：`WebSocketConfig`负责配置和注册WebSocket处理器，`ChatWebSocketHandler`处理WebSocket的连接、消息和关闭事件，`ChatHandler`处理业务逻辑，`JwtUtils`用于解析JWT令牌以提取用户信息。
 
 **本节来源**
 - [WebSocketConfig.java](file://src/main/java/com/yizhaoqi/smartpai/config/WebSocketConfig.java#L1-L24)
@@ -63,7 +63,7 @@ PaiSmart的WebSocket实现由几个核心组件构成：`WebSocketConfig`负责�
 - [JwtUtils.java](file://src/main/java/com/yizhaoqi/smartpai/utils/JwtUtils.java#L1-L434)
 
 ## 架构概述
-PaiSmart的WebSocket架构采用Spring WebSocket框架，通过`WebSocketConfig`类配置WebSocket处理器，并使用`ChatWebSocketHandler`处理WebSocket事件。前端通过`test.html`页面连接到后端WebSocket服务，使用JWT令牌进行身份验证。
+RAG知识库的WebSocket架构采用Spring WebSocket框架，通过`WebSocketConfig`类配置WebSocket处理器，并使用`ChatWebSocketHandler`处理WebSocket事件。前端通过`test.html`页面连接到后端WebSocket服务，使用JWT令牌进行身份验证。
 
 ```mermaid
 sequenceDiagram
@@ -508,7 +508,7 @@ public String extractUsernameFromToken(String token) {
 - [JwtUtils.java](file://src/main/java/com/yizhaoqi/smartpai/utils/JwtUtils.java#L1-L434)
 
 ## 依赖分析
-PaiSmart的WebSocket组件之间存在明确的依赖关系。`WebSocketConfig`依赖`ChatWebSocketHandler`，`ChatWebSocketHandler`依赖`ChatHandler`和`JwtUtils`，`ChatHandler`依赖`RedisTemplate`、`HybridSearchService`和`DeepSeekClient`。
+RAG知识库的WebSocket组件之间存在明确的依赖关系。`WebSocketConfig`依赖`ChatWebSocketHandler`，`ChatWebSocketHandler`依赖`ChatHandler`和`JwtUtils`，`ChatHandler`依赖`RedisTemplate`、`HybridSearchService`和`DeepSeekClient`。
 
 ```mermaid
 graph TD
@@ -548,4 +548,4 @@ ChatHandler --> DeepSeekClient
 - [ChatHandler.java](file://src/main/java/com/yizhaoqi/smartpai/service/ChatHandler.java#L1-L401)
 
 ## 结论
-PaiSmart的WebSocket实现通过`WebSocketConfig`、`ChatWebSocketHandler`、`ChatHandler`和`JwtUtils`等组件，实现了安全、高效的实时通信。通过合理的配置和优化，可以确保在高并发场景下的稳定通信。
+RAG知识库的WebSocket实现通过`WebSocketConfig`、`ChatWebSocketHandler`、`ChatHandler`和`JwtUtils`等组件，实现了安全、高效的实时通信。通过合理的配置和优化，可以确保在高并发场景下的稳定通信。

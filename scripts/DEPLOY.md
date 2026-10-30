@@ -1,4 +1,4 @@
-# PaiSmart 发布
+# RAG知识库 发布
 
 入口：`bash scripts/deploy-release.sh <action>`。默认 `DRY_RUN=1`，仅输出计划；不连接服务器，不写文件。
 
@@ -21,7 +21,7 @@ DRY_RUN=0 bash scripts/deploy-release.sh prepare
 DRY_RUN=0 bash scripts/deploy-release.sh publish
 ```
 
-远程每次发布记录保存在 `/home/www/PaiSmart/.releases/<RELEASE_ID>/`（仅当前服务器用户可读）：
+远程每次发布记录保存在 `/home/www/RAG知识库/.releases/<RELEASE_ID>/`（仅当前服务器用户可读）：
 
 - `manifest.json`：提交与构建产物哈希。产物必须由该提交构建，发布器不把 Git HEAD 当作构建来源的独立证明。
 - `backup/database.sql.gz`：一致性导出；检查 mysqldump 退出码、完整 gzip 和 SQL 完成标记。不等同于做过恢复演练。

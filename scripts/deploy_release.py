@@ -61,7 +61,7 @@ def main():
     if not release_id or not re.fullmatch(r'[A-Za-z0-9_-]+', release_id):
         raise RuntimeError('Set RELEASE_ID explicitly (letters, digits, _ or -)')
     cfg = {'release_id': release_id,
-           'backend': '/home/www/PaiSmart', 'frontend': '/home/www/PaiSmart-Front',
+           'backend': '/home/www/RAG知识库', 'frontend': '/home/www/RAG知识库-Front',
            'public_url': 'https://smart.paicoding.com'}
     remote_dir = cfg['backend'] + '/.releases/' + release_id
     encoded = base64.b64encode(json.dumps(cfg).encode()).decode()

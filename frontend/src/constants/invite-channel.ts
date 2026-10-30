@@ -6,7 +6,7 @@ export const inviteChannelConfig = {
 
 export function buildInviteChannelGuide() {
   return [
-    '获取 PaiSmart 邀请码方式：',
+    '获取 RAG知识库 邀请码方式：',
     `1. 微信搜索并关注公众号${inviteChannelConfig.officialAccountName}`,
     `2. 后台回复【${inviteChannelConfig.replyKeywords.join('】、【')}】`,
     '3. 收到邀请码后，回到注册页继续完成注册'
@@ -15,7 +15,7 @@ export function buildInviteChannelGuide() {
 
 export function buildInviteCodeShareMessage(shareLink: string, inviteCode: string) {
   return [
-    '派聪明正在内测，欢迎来体验。',
+    'RAG知识库正在内测，欢迎来体验。',
     `邀请码：${inviteCode}`,
     `注册链接：${shareLink}`,
     '',

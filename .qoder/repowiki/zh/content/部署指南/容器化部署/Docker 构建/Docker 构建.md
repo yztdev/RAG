@@ -24,14 +24,14 @@
 9. [结论](#结论)
 
 ## 简介
-本文档详细说明了为PaiSmart全栈应用创建高效Docker镜像构建流程的方法。该应用采用前后端分离架构，前端基于Vue 3与Vite构建，后端基于Spring Boot框架。尽管项目中未直接提供Dockerfile或docker-compose文件，但通过分析现有配置，可以推断出一个高效的多阶段Docker构建策略。该策略将分别处理前端和后端的构建过程，最终实现统一部署。
+本文档详细说明了为RAG知识库全栈应用创建高效Docker镜像构建流程的方法。该应用采用前后端分离架构，前端基于Vue 3与Vite构建，后端基于Spring Boot框架。尽管项目中未直接提供Dockerfile或docker-compose文件，但通过分析现有配置，可以推断出一个高效的多阶段Docker构建策略。该策略将分别处理前端和后端的构建过程，最终实现统一部署。
 
 ## 项目结构
-PaiSmart项目采用清晰的分层结构，前端和后端代码分别位于独立的目录中。
+RAG知识库项目采用清晰的分层结构，前端和后端代码分别位于独立的目录中。
 
 ```mermaid
 graph TD
-A[PaiSmart]
+A[RAG知识库]
 A --> B[frontend]
 B --> B1[vite.config.ts]
 B --> B2[package.json]
@@ -53,14 +53,14 @@ A --> E[README.md]
 - [pom.xml](file://pom.xml#L0-L202)
 
 ## 核心组件
-PaiSmart的核心组件包括使用Vue 3 + Vite构建的前端应用和使用Spring Boot构建的后端服务。前端通过`vite build`命令进行构建，生成静态资源。后端通过Maven的`spring-boot-maven-plugin`插件打包成可执行的JAR文件。前端的构建流程由`vite.config.ts`配置，而后端的打包流程由`pom.xml`定义。
+RAG知识库的核心组件包括使用Vue 3 + Vite构建的前端应用和使用Spring Boot构建的后端服务。前端通过`vite build`命令进行构建，生成静态资源。后端通过Maven的`spring-boot-maven-plugin`插件打包成可执行的JAR文件。前端的构建流程由`vite.config.ts`配置，而后端的打包流程由`pom.xml`定义。
 
 **本节来源**
 - [vite.config.ts](file://frontend/vite.config.ts#L0-L52)
 - [pom.xml](file://pom.xml#L0-L202)
 
 ## 架构概述
-PaiSmart采用前后端分离的微服务架构。前端负责用户界面展示，通过API与后端进行通信。后端提供RESTful API，处理业务逻辑、数据存储和第三方服务集成（如DeepSeek AI、MinIO、Elasticsearch）。在Docker部署场景下，最佳实践是将前端构建产物集成到后端的静态资源目录中，然后由Spring Boot应用统一提供服务。
+RAG知识库采用前后端分离的微服务架构。前端负责用户界面展示，通过API与后端进行通信。后端提供RESTful API，处理业务逻辑、数据存储和第三方服务集成（如DeepSeek AI、MinIO、Elasticsearch）。在Docker部署场景下，最佳实践是将前端构建产物集成到后端的静态资源目录中，然后由Spring Boot应用统一提供服务。
 
 ```mermaid
 graph TB
@@ -203,7 +203,7 @@ E --> F[完成]
 - [pom.xml](file://pom.xml#L0-L202)
 
 ## 依赖分析
-PaiSmart项目的依赖关系清晰，前端和后端的依赖通过不同的包管理器（pnpm和Maven）进行管理。
+RAG知识库项目的依赖关系清晰，前端和后端的依赖通过不同的包管理器（pnpm和Maven）进行管理。
 
 ```mermaid
 graph TD
@@ -250,4 +250,4 @@ end
 - [pom.xml](file://pom.xml#L0-L202)
 
 ## 结论
-虽然PaiSmart项目当前缺少Docker相关的配置文件，但其清晰的项目结构和成熟的构建配置为创建高效的Docker镜像构建流程奠定了坚实的基础。通过实施多阶段Docker构建，可以分别利用Node.js环境构建前端静态资源，并利用Maven环境打包后端应用，最后将前端产物集成到后端的静态资源目录中，实现统一部署。这种策略不仅遵循了最佳实践，还能有效优化构建速度和镜像体积。建议创建`Dockerfile`和`docker-compose.yml`文件来自动化这一流程。
+虽然RAG知识库项目当前缺少Docker相关的配置文件，但其清晰的项目结构和成熟的构建配置为创建高效的Docker镜像构建流程奠定了坚实的基础。通过实施多阶段Docker构建，可以分别利用Node.js环境构建前端静态资源，并利用Maven环境打包后端应用，最后将前端产物集成到后端的静态资源目录中，实现统一部署。这种策略不仅遵循了最佳实践，还能有效优化构建速度和镜像体积。建议创建`Dockerfile`和`docker-compose.yml`文件来自动化这一流程。

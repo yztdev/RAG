@@ -183,7 +183,7 @@ class EmbeddingReindexServiceTest {
 
     @Test
     void validationQueryWithoutHitsAbortsSwitch() throws Exception {
-        properties.setValidationQueries(List.of("派聪明支持哪些文件格式"));
+        properties.setValidationQueries(List.of("RAG知识库支持哪些文件格式"));
         when(indexManager.knnProbe(eq(NEW_INDEX), anyList(), anyInt())).thenReturn(0);
 
         service.startRebuild("zhipu", false, "admin");

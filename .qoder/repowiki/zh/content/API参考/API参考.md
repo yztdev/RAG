@@ -34,10 +34,10 @@
 9. [结论](#结论)
 
 ## 简介
-本文档为PaiSmart智能问答系统提供完整的RESTful API参考，涵盖用户认证、文档管理、聊天交互和知识库搜索等所有公开接口。系统采用Spring Boot后端框架，结合Vue 3前端，实现了一个基于知识库的智能问答平台。后端通过JWT进行用户认证，利用Elasticsearch实现混合搜索（文本匹配+向量相似度），并通过WebSocket提供实时聊天功能。API设计遵循RESTful原则，所有响应均采用统一的JSON格式，包含`code`、`message`和`data`字段。文档详细记录了每个端点的HTTP方法、URL路径、请求参数、请求头和响应结构，并提供了curl示例和Postman调用场景。
+本文档为RAG知识库智能问答系统提供完整的RESTful API参考，涵盖用户认证、文档管理、聊天交互和知识库搜索等所有公开接口。系统采用Spring Boot后端框架，结合Vue 3前端，实现了一个基于知识库的智能问答平台。后端通过JWT进行用户认证，利用Elasticsearch实现混合搜索（文本匹配+向量相似度），并通过WebSocket提供实时聊天功能。API设计遵循RESTful原则，所有响应均采用统一的JSON格式，包含`code`、`message`和`data`字段。文档详细记录了每个端点的HTTP方法、URL路径、请求参数、请求头和响应结构，并提供了curl示例和Postman调用场景。
 
 ## 项目结构
-PaiSmart项目采用前后端分离的架构。后端位于`src/main/java`目录，基于Spring Boot构建，主要包含`controller`（控制器）、`service`（服务）、`repository`（数据访问）和`model`（实体）等包。前端位于`frontend/src`目录，使用Vue 3和TypeScript开发，包含`components`（组件）、`views`（视图）、`store`（状态管理）和`service`（API调用）等模块。配置文件如`application.yml`定义了数据库、Redis和MinIO等外部服务的连接信息。`pom.xml`文件管理了所有Java依赖。
+RAG知识库项目采用前后端分离的架构。后端位于`src/main/java`目录，基于Spring Boot构建，主要包含`controller`（控制器）、`service`（服务）、`repository`（数据访问）和`model`（实体）等包。前端位于`frontend/src`目录，使用Vue 3和TypeScript开发，包含`components`（组件）、`views`（视图）、`store`（状态管理）和`service`（API调用）等模块。配置文件如`application.yml`定义了数据库、Redis和MinIO等外部服务的连接信息。`pom.xml`文件管理了所有Java依赖。
 
 ```mermaid
 graph TD
@@ -459,4 +459,4 @@ F --> N
 - [ChatHandler.java](file://src/main/java/com/yizhaoqi/smartpai/service/ChatHandler.java#L1-L199)
 
 ## 结论
-本文档详细介绍了PaiSmart系统的RESTful API，涵盖了从用户认证到知识库搜索的完整流程。系统架构清晰，组件职责分明，通过JWT实现安全认证，利用Elasticsearch和大模型提供智能问答能力。API设计规范，易于第三方集成。开发者在使用时，应重点关注认证流程、WebSocket消息格式和搜索接口的权限控制。未来可考虑增加API版本控制和更详细的错误码定义，以进一步提升API的健壮性和易用性。
+本文档详细介绍了RAG知识库系统的RESTful API，涵盖了从用户认证到知识库搜索的完整流程。系统架构清晰，组件职责分明，通过JWT实现安全认证，利用Elasticsearch和大模型提供智能问答能力。API设计规范，易于第三方集成。开发者在使用时，应重点关注认证流程、WebSocket消息格式和搜索接口的权限控制。未来可考虑增加API版本控制和更详细的错误码定义，以进一步提升API的健壮性和易用性。

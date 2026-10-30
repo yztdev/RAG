@@ -1,10 +1,10 @@
 # AGENTS.md
 
-This file is the agent-facing working agreement for the `PaiSmart` repository.
+This file is the agent-facing working agreement for the `RAG知识库` repository.
 
 ## Purpose
 
-PaiSmart (派聪明) is an enterprise AI knowledge management system built around a RAG workflow:
+RAG知识库 is an enterprise AI knowledge management system built around a RAG workflow:
 
 - Spring Boot backend
 - Vue 3 + TypeScript frontend
@@ -143,7 +143,7 @@ Do not stop at “frontend shows empty”; verify whether:
 
 ### Multi-tenant behavior
 
-PaiSmart uses organization tags and user/org relationships.
+RAG知识库 uses organization tags and user/org relationships.
 
 When changing queries or admin views, verify whether filtering is driven by:
 

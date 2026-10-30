@@ -387,7 +387,7 @@ async function handleSourceFileClick(fileInfo: {
         <SystemLogo class="text-6 text-white" />
       </NAvatar>
       <div class="flex-col gap-1">
-        <NText class="text-4 font-bold">派聪明</NText>
+        <NText class="text-4 font-bold">RAG知识库</NText>
         <NText class="text-muted text-3">{{ formatDate(msg.timestamp) }}</NText>
       </div>
     </div>

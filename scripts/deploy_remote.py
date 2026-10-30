@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""PaiSmart release worker. Standard library only; no shell evaluation of .env."""
+"""RAG知识库 release worker. Standard library only; no shell evaluation of .env."""
 import base64
 import fcntl
 import gzip
@@ -157,7 +157,7 @@ def assert_pid(backend):
     if Path('/proc/{}/cwd'.format(pid)).resolve() != backend.resolve():
         raise RuntimeError('PID working directory mismatch')
     if '-jar' not in cmd or Path(cmd[cmd.index('-jar') + 1]).name != JAR:
-        raise RuntimeError('PID is not PaiSmart')
+        raise RuntimeError('PID is not RAG知识库')
     return pid, cmd
 
 

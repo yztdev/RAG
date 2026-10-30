@@ -150,7 +150,7 @@ spring:
     redis:
       host: localhost
       port: 6379
-      password: PaiSmart2025
+      password: RAG知识库2025
 ```
 
 **本节来源**
@@ -191,7 +191,7 @@ B --> E[Lettuce]
 使用`telnet localhost 6379`或`nc -zv localhost 6379`检查网络是否通畅。
 
 ### 检查认证信息
-在Docker环境下，需提供正确的密码`PaiSmart2025`进行连接。开发环境无需密码。
+在Docker环境下，需提供正确的密码`RAG知识库2025`进行连接。开发环境无需密码。
 
 ### 分析连接异常堆栈
 通过`LogUtils`输出的日志定位连接异常，常见故障现象包括：

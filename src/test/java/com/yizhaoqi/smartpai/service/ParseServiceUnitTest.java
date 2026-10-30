@@ -252,7 +252,7 @@ class ParseServiceUnitTest {
         String text = """
                 哥们 明年
 
-                  我 靠 派聪明 拿 到 的 日 常实习
+                  我 靠 RAG知识库 拿 到 的 日 常实习
 
                   学 习 这人 么 快噢直接 用
 
@@ -266,9 +266,9 @@ class ParseServiceUnitTest {
         String normalized = normalizeLiteParseText(text);
 
         assertTrue(normalized.contains("哥们明年"));
-        assertTrue(normalized.contains("我靠派聪明拿到的日常实习"));
+        assertTrue(normalized.contains("我靠RAG知识库拿到的日常实习"));
         assertTrue(normalized.contains("学习这人么快噢直接用"));
-        assertTrue(normalized.contains("我把派聪明放第一个了，感觉面试官都围绕这"));
+        assertTrue(normalized.contains("我把RAG知识库放第一个了，感觉面试官都围绕这"));
         assertFalse(normalized.contains("No. 2 / 37"));
     }
 
@@ -279,7 +279,7 @@ class ParseServiceUnitTest {
 
                 ⼤家好，我是⼆哥呀。
 
-                派聪明是 2025年 9 ⽉份上线的，截⽌到⽬前，已经取得了⾮常瞩⽬的成绩，我这⾥晒⼀下哈。
+                RAG知识库是 2025年 9 ⽉份上线的，截⽌到⽬前，已经取得了⾮常瞩⽬的成绩，我这⾥晒⼀下哈。
 
 
                 yzt，目前靠着星球面渣逆袭+rag项目+球友分
@@ -309,7 +309,7 @@ class ParseServiceUnitTest {
 
         String normalized = normalizeLiteParseText(text);
 
-        assertTrue(normalized.contains("派聪明是2025年9⽉份上线的"));
+        assertTrue(normalized.contains("RAG知识库是2025年9⽉份上线的"));
         assertTrue(normalized.contains("yzt，目前靠着星球面渣逆袭+rag项目+球友分"));
         assertTrue(normalized.contains("享优质面经侥幸oc了深圳招银网络和合肥科大讯飞"));
         assertTrue(normalized.contains("那必须有"));
@@ -322,7 +322,7 @@ class ParseServiceUnitTest {
         String text = """
                 哥们 明年
 
-                  我 靠 派聪明 拿 到 的 日 常实习
+                  我 靠 RAG知识库 拿 到 的 日 常实习
 
                   学 习 这人 么 快噢直接 用
 

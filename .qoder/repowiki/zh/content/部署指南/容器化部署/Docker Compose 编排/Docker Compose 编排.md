@@ -24,10 +24,10 @@
 9. [结论](#结论)
 
 ## 简介
-PaiSmart（派聪明）是一个企业级AI知识管理系统，采用RAG（检索增强生成）技术构建。本项目通过Docker Compose实现多服务容器化编排，整合了MySQL、Elasticsearch、Redis、Kafka和MinIO等核心中间件，为智能文档处理和检索提供支持。本文档深入解析其Docker Compose编排配置，详细说明各服务的配置细节、网络通信机制、依赖关系以及与外部化配置文件的集成方式。
+RAG知识库是一个企业级AI知识管理系统，采用RAG（检索增强生成）技术构建。本项目通过Docker Compose实现多服务容器化编排，整合了MySQL、Elasticsearch、Redis、Kafka和MinIO等核心中间件，为智能文档处理和检索提供支持。本文档深入解析其Docker Compose编排配置，详细说明各服务的配置细节、网络通信机制、依赖关系以及与外部化配置文件的集成方式。
 
 ## 项目结构
-PaiSmart项目采用前后端分离的微服务架构，后端基于Spring Boot，前端基于Vue 3 + TypeScript。项目根目录下包含`frontend`（前端）、`src`（后端源码）、`docs`（文档）等主要目录。Docker Compose配置文件位于`docs/docker-compose.yaml`，而应用的外部化配置则通过Spring Profile机制，由`src/main/resources/`目录下的`application.yml`、`application-dev.yml`和`application-docker.yml`等文件管理。
+RAG知识库项目采用前后端分离的微服务架构，后端基于Spring Boot，前端基于Vue 3 + TypeScript。项目根目录下包含`frontend`（前端）、`src`（后端源码）、`docs`（文档）等主要目录。Docker Compose配置文件位于`docs/docker-compose.yaml`，而应用的外部化配置则通过Spring Profile机制，由`src/main/resources/`目录下的`application.yml`、`application-dev.yml`和`application-docker.yml`等文件管理。
 
 ```mermaid
 graph TB
@@ -66,13 +66,13 @@ src --> resources
 - [application-docker.yml](file://src/main/resources/application-docker.yml)
 
 ## 核心组件
-PaiSmart的核心功能由多个后端服务和中间件协同完成。`DocumentService`负责文档的上传与解析，`ElasticsearchService`管理文档的索引与搜索，`VectorizationService`利用AI模型将文本转换为嵌入向量，`ChatHandler`处理带有RAG功能的AI聊天交互，`UserService`和`ConversationService`分别管理用户认证和聊天会话。这些服务通过Kafka进行异步解耦，利用Redis进行缓存，并通过MinIO存储文件。
+RAG知识库的核心功能由多个后端服务和中间件协同完成。`DocumentService`负责文档的上传与解析，`ElasticsearchService`管理文档的索引与搜索，`VectorizationService`利用AI模型将文本转换为嵌入向量，`ChatHandler`处理带有RAG功能的AI聊天交互，`UserService`和`ConversationService`分别管理用户认证和聊天会话。这些服务通过Kafka进行异步解耦，利用Redis进行缓存，并通过MinIO存储文件。
 
 **本节来源**
 - [CLAUDE.md](file://CLAUDE.md#L104-L143)
 
 ## 架构概览
-PaiSmart的系统架构是一个典型的前后端分离、多服务协同的现代应用。前端通过HTTP请求与后端Spring Boot应用交互。后端应用作为核心，连接并协调多个外部服务：使用MySQL作为主数据库存储元数据，使用Redis进行会话和数据缓存，使用Kafka作为消息队列处理异步任务（如文件解析），使用MinIO作为对象存储服务存放原始文件，使用Elasticsearch进行全文检索和向量搜索。AI能力通过调用DeepSeek和Embedding API实现。
+RAG知识库的系统架构是一个典型的前后端分离、多服务协同的现代应用。前端通过HTTP请求与后端Spring Boot应用交互。后端应用作为核心，连接并协调多个外部服务：使用MySQL作为主数据库存储元数据，使用Redis进行会话和数据缓存，使用Kafka作为消息队列处理异步任务（如文件解析），使用MinIO作为对象存储服务存放原始文件，使用Elasticsearch进行全文检索和向量搜索。AI能力通过调用DeepSeek和Embedding API实现。
 
 ```mermaid
 graph TB
@@ -111,7 +111,7 @@ API --> Embedding
 
 ## 详细组件分析
 ### 应用服务编排分析
-PaiSmart的Docker Compose配置定义了一个名为`pai_smart`的网络，所有服务在此网络内通过服务名进行通信。该配置文件位于`docs/docker-compose.yaml`，它精确地编排了MySQL、MinIO、Redis、Kafka和Elasticsearch五个核心服务。
+RAG知识库的Docker Compose配置定义了一个名为`pai_smart`的网络，所有服务在此网络内通过服务名进行通信。该配置文件位于`docs/docker-compose.yaml`，它精确地编排了MySQL、MinIO、Redis、Kafka和Elasticsearch五个核心服务。
 
 #### 服务配置与依赖关系
 每个服务都通过`environment`、`volumes`、`ports`和`healthcheck`等指令进行详细配置。虽然`docker-compose.yaml`中未显式使用`depends_on`来定义启动顺序，但服务间的依赖关系是隐式存在的。例如，应用服务（未在该文件中定义，但运行在宿主机上）依赖于MySQL、Redis、Kafka和Elasticsearch的正常运行。Kafka服务通过其`command`脚本在启动后自动创建`file-processing`和`vectorization`两个主题，确保了消息队列的就绪。
@@ -151,7 +151,7 @@ MinIO服务使用官方镜像，暴露19000（API）和19001（控制台）端�
 - [docker-compose.yaml](file://docs/docker-compose.yaml#L26-L40)
 
 #### Redis服务
-Redis服务配置了密码`PaiSmart2025`，并通过`--appendonly yes`开启AOF持久化。日志目录挂载到宿主机的`/data/docker/redis`。健康检查使用`redis-cli ping`命令验证服务状态。
+Redis服务配置了密码`RAG知识库2025`，并通过`--appendonly yes`开启AOF持久化。日志目录挂载到宿主机的`/data/docker/redis`。健康检查使用`redis-cli ping`命令验证服务状态。
 
 **本节来源**
 - [docker-compose.yaml](file://docs/docker-compose.yaml#L42-L56)
@@ -187,9 +187,9 @@ Elasticsearch服务使用8.10.4版本，配置为单节点模式。通过`ELASTI
 classDiagram
 class application_docker_yml {
 +server.port : 8081
-+spring.datasource.url : jdbc : mysql : //localhost : 3306/PaiSmart...
++spring.datasource.url : jdbc : mysql : //localhost : 3306/RAG知识库...
 +spring.data.redis.host : localhost
-+spring.data.redis.password : PaiSmart2025
++spring.data.redis.password : RAG知识库2025
 +spring.kafka.bootstrap-servers : 127.0.0.1 : 9092
 +minio.endpoint : http : //localhost : 19000
 +elasticsearch.host : localhost
@@ -214,7 +214,7 @@ application_docker_yml --> docker_compose_yaml : "配置匹配"
 - [docker-compose.yaml](file://docs/docker-compose.yaml#L1-L160)
 
 ## 依赖分析
-PaiSmart项目的依赖关系清晰，分为外部服务依赖和内部代码依赖。外部服务依赖通过Docker Compose管理，确保了中间件的可用性。内部代码依赖通过Maven的`pom.xml`文件管理，引入了Spring Boot、Lombok、MinIO SDK、Kafka、Elasticsearch客户端等关键库。
+RAG知识库项目的依赖关系清晰，分为外部服务依赖和内部代码依赖。外部服务依赖通过Docker Compose管理，确保了中间件的可用性。内部代码依赖通过Maven的`pom.xml`文件管理，引入了Spring Boot、Lombok、MinIO SDK、Kafka、Elasticsearch客户端等关键库。
 
 ```mermaid
 graph TD
@@ -258,4 +258,4 @@ tika --> |提供文档解析| app
 - [application-docker.yml](file://src/main/resources/application-docker.yml#L1-L119)
 
 ## 结论
-PaiSmart项目通过`docker-compose.yaml`文件实现了对MySQL、MinIO、Redis、Kafka和Elasticsearch等核心服务的高效编排。该配置文件不仅定义了服务的启动参数、端口映射和数据持久化策略，还通过自定义脚本确保了Kafka主题的自动创建和Elasticsearch中文分词插件的安装。通过`application-docker.yml`文件，应用实现了与Docker环境的无缝集成，体现了配置外部化和环境分离的最佳实践。这套编排方案为PaiSmart提供了一个稳定、可靠且易于部署的开发和测试环境。
+RAG知识库项目通过`docker-compose.yaml`文件实现了对MySQL、MinIO、Redis、Kafka和Elasticsearch等核心服务的高效编排。该配置文件不仅定义了服务的启动参数、端口映射和数据持久化策略，还通过自定义脚本确保了Kafka主题的自动创建和Elasticsearch中文分词插件的安装。通过`application-docker.yml`文件，应用实现了与Docker环境的无缝集成，体现了配置外部化和环境分离的最佳实践。这套编排方案为RAG知识库提供了一个稳定、可靠且易于部署的开发和测试环境。

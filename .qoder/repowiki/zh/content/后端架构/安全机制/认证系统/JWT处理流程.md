@@ -23,7 +23,7 @@
 
 ## JWT处理流程概述
 
-本文档全面阐述了PaiSmart项目中JWT（JSON Web Token）令牌的生成、解析、验证与刷新机制。系统通过`JwtUtils`工具类实现JWT的核心功能，结合`JwtAuthenticationFilter`过滤器在Spring Security框架中实现无状态认证。用户登录后获取的JWT令牌包含用户身份、角色和组织标签等自定义声明，通过Redis缓存实现令牌状态管理，支持主动刷新和自动刷新机制。整个流程确保了系统的安全性与用户体验的平衡。
+本文档全面阐述了RAG知识库项目中JWT（JSON Web Token）令牌的生成、解析、验证与刷新机制。系统通过`JwtUtils`工具类实现JWT的核心功能，结合`JwtAuthenticationFilter`过滤器在Spring Security框架中实现无状态认证。用户登录后获取的JWT令牌包含用户身份、角色和组织标签等自定义声明，通过Redis缓存实现令牌状态管理，支持主动刷新和自动刷新机制。整个流程确保了系统的安全性与用户体验的平衡。
 
 ## 核心组件分析
 

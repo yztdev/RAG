@@ -11,12 +11,12 @@ class CitationExtractorTest {
 
     @Test
     void extractsCitationBeforeAndAfterSentenceTerminator() {
-        String answer = "派聪明支持 PDF 解析(来源#1: guide.pdf | 第3页)。向量模型默认是 text-embedding-v4。(来源#2: config.md)";
+        String answer = "RAG知识库支持 PDF 解析(来源#1: guide.pdf | 第3页)。向量模型默认是 text-embedding-v4。(来源#2: config.md)";
 
         List<CitationExtractor.CitedClaim> claims = CitationExtractor.extract(answer, 300);
 
         assertEquals(2, claims.size());
-        assertEquals("派聪明支持 PDF 解析", claims.get(0).claim());
+        assertEquals("RAG知识库支持 PDF 解析", claims.get(0).claim());
         assertEquals(List.of(1), claims.get(0).referenceNumbers());
         assertEquals("向量模型默认是 text-embedding-v4。", claims.get(1).claim());
         assertEquals(List.of(2), claims.get(1).referenceNumbers());

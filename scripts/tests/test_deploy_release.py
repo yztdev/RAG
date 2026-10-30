@@ -54,7 +54,7 @@ class ReleaseTests(unittest.TestCase):
         p = self.root / 'mysqldump'
         p.write_text('#!/bin/sh\necho "CREATE TABLE t (x INT);"\necho "-- Dump completed"\nexit 2\n')
         p.chmod(0o755)
-        env = {'SPRING_DATASOURCE_URL': 'jdbc:mysql://localhost:3306/PaiSmart?x=y',
+        env = {'SPRING_DATASOURCE_URL': 'jdbc:mysql://localhost:3306/RAG知识库?x=y',
                'SPRING_DATASOURCE_USERNAME': 'fixture', 'SPRING_DATASOURCE_PASSWORD': 'test"#\\'}
         with patch.dict(os.environ, PATH=str(self.root) + ':' + os.environ['PATH']):
             with self.assertRaisesRegex(RuntimeError, 'mysqldump failed'):

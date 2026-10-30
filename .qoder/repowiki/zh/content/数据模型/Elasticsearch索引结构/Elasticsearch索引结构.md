@@ -26,10 +26,10 @@
 9. [结论](#结论)
 
 ## 简介
-本文档深入解析了PaiSmart项目中Elasticsearch知识库索引的结构与实现机制。文档重点分析了`knowledge_base`索引的mapping配置、实体类与ES文档的映射关系、文本分块与向量化存储策略，以及混合搜索的实现逻辑。通过分析`EsDocument`和`TextChunk`实体类，揭示了系统如何将文档内容分块并转换为向量存储。文档还详细解释了`HybridSearchService`如何结合关键词搜索和向量相似度搜索，实现高效的混合检索功能。此外，文档涵盖了索引初始化、数据写入和API接口等关键流程，为理解整个知识库系统的运作提供了全面的视角。
+本文档深入解析了RAG知识库项目中Elasticsearch知识库索引的结构与实现机制。文档重点分析了`knowledge_base`索引的mapping配置、实体类与ES文档的映射关系、文本分块与向量化存储策略，以及混合搜索的实现逻辑。通过分析`EsDocument`和`TextChunk`实体类，揭示了系统如何将文档内容分块并转换为向量存储。文档还详细解释了`HybridSearchService`如何结合关键词搜索和向量相似度搜索，实现高效的混合检索功能。此外，文档涵盖了索引初始化、数据写入和API接口等关键流程，为理解整个知识库系统的运作提供了全面的视角。
 
 ## 项目结构
-PaiSmart项目采用典型的前后端分离架构，后端基于Spring Boot框架，前端使用Vue.js。知识库功能的核心位于后端`src/main/java`目录下，涉及Elasticsearch索引管理、文档向量化和混合搜索等关键服务。
+RAG知识库项目采用典型的前后端分离架构，后端基于Spring Boot框架，前端使用Vue.js。知识库功能的核心位于后端`src/main/java`目录下，涉及Elasticsearch索引管理、文档向量化和混合搜索等关键服务。
 
 ```mermaid
 graph TD
@@ -265,4 +265,4 @@ ElasticsearchService --> EsDocument
 - [EsConfig.java](file://src/main/java/com/yizhaoqi/smartpai/config/EsConfig.java)
 
 ## 结论
-PaiSmart项目的知识库系统通过精心设计的Elasticsearch索引结构和高效的混合搜索算法，实现了强大的语义搜索能力。系统采用`EsDocument`和`TextChunk`实体类清晰地分离了存储模型和处理模型，通过`knowledge_base.json`配置文件定义了优化的索引mapping。`VectorizationService`和`HybridSearchService`分别负责数据写入和搜索查询，形成了完整的处理闭环。特别是混合搜索的实现，结合了向量相似度和关键词匹配的优势，并通过两阶段搜索策略优化了性能和准确性。整个系统还集成了完善的权限控制机制，确保了数据的安全性。该设计为构建高性能的知识库应用提供了优秀的参考范例。
+RAG知识库项目的知识库系统通过精心设计的Elasticsearch索引结构和高效的混合搜索算法，实现了强大的语义搜索能力。系统采用`EsDocument`和`TextChunk`实体类清晰地分离了存储模型和处理模型，通过`knowledge_base.json`配置文件定义了优化的索引mapping。`VectorizationService`和`HybridSearchService`分别负责数据写入和搜索查询，形成了完整的处理闭环。特别是混合搜索的实现，结合了向量相似度和关键词匹配的优势，并通过两阶段搜索策略优化了性能和准确性。整个系统还集成了完善的权限控制机制，确保了数据的安全性。该设计为构建高性能的知识库应用提供了优秀的参考范例。

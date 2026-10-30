@@ -33,7 +33,7 @@ class LiteParseOcrAdapterServiceTest {
                       "blockInfo": {
                         "blockDetails": [
                           {
-                            "blockContent": "我靠派聪明拿到的日常实习",
+                            "blockContent": "我靠RAG知识库拿到的日常实习",
                             "blockConfidence": 99,
                             "blockPoints": [
                               {"x": 42, "y": 52},
@@ -68,7 +68,7 @@ class LiteParseOcrAdapterServiceTest {
         assertEquals(2, results.size());
 
         Map<?, ?> first = assertInstanceOf(Map.class, results.get(0));
-        assertEquals("我靠派聪明拿到的日常实习", first.get("text"));
+        assertEquals("我靠RAG知识库拿到的日常实习", first.get("text"));
         assertEquals(List.of(42.0, 52.0, 540.0, 92.0), first.get("bbox"));
         assertEquals(0.99, (Double) first.get("confidence"), 0.0001);
     }

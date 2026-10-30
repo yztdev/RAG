@@ -6,37 +6,37 @@
 
 当然了，说外卖和点评烂大街，我肯定是要提供一些解决方案的。
 
-这不，历经 4 个月，派聪明 RAG 知识库项目终于完工（包括源码和教程，全部交付给大家）！
+这不，历经 4 个月，RAG知识库 RAG 知识库项目终于完工（包括源码和教程，全部交付给大家）！
 
 不容易啊。
 
-派聪明是 2025年 9 月份上线的，截止到目前，已经取得了非常瞩目的成绩，我这里晒一下哈。
+RAG知识库是 2025年 9 月份上线的，截止到目前，已经取得了非常瞩目的成绩，我这里晒一下哈。
 
-![面渣逆袭+派聪明 拿下招银网络+科大讯飞](https://cdn.tobebetterjavaer.com/paicoding/fb5db62ab92092e2d74a4916b6a45710.png)
+![面渣逆袭+RAG知识库 拿下招银网络+科大讯飞](https://cdn.tobebetterjavaer.com/paicoding/fb5db62ab92092e2d74a4916b6a45710.png)
 
-![派聪明拿到的日常实习](https://cdn.tobebetterjavaer.com/paicoding/da01a535b091c5ebeed70bf9a08a90c6.png)
+![RAG知识库拿到的日常实习](https://cdn.tobebetterjavaer.com/paicoding/da01a535b091c5ebeed70bf9a08a90c6.png)
 
-![派聪明拿下合合信息](https://cdn.tobebetterjavaer.com/paicoding/3518a76f439c325de8df763482cbebc4.png)
+![RAG知识库拿下合合信息](https://cdn.tobebetterjavaer.com/paicoding/3518a76f439c325de8df763482cbebc4.png)
 
-![派聪明拿下小红书](https://cdn.tobebetterjavaer.com/paicoding/7bed4d34460749d68db9c0fcbc4621a8.png)
+![RAG知识库拿下小红书](https://cdn.tobebetterjavaer.com/paicoding/7bed4d34460749d68db9c0fcbc4621a8.png)
 
-![派聪明拿下网易](https://cdn.tobebetterjavaer.com/paicoding/5f227edcb38ffe41aea8fc0880f64cad.png)
+![RAG知识库拿下网易](https://cdn.tobebetterjavaer.com/paicoding/5f227edcb38ffe41aea8fc0880f64cad.png)
 
-说句真心话，看到这，就可以无脑冲这个项目了，因为这些，还只是冰山一角。扫下面的优惠券（或者长按自动识别）解锁派聪明源码和教程吧，[星球](https://javabetter.cn/zhishixingqiu/)目前定价 169 元/年，优惠完只需要 139 元，每天不到 0.38 元，绝对的超值。
+说句真心话，看到这，就可以无脑冲这个项目了，因为这些，还只是冰山一角。扫下面的优惠券（或者长按自动识别）解锁RAG知识库源码和教程吧，[星球](https://javabetter.cn/zhishixingqiu/)目前定价 169 元/年，优惠完只需要 139 元，每天不到 0.38 元，绝对的超值。
 
-![派聪明优惠券](https://cdn.tobebetterjavaer.com/paicoding/97601d7a337d7d944b02bb4a79cd6430.png)
+![RAG知识库优惠券](https://cdn.tobebetterjavaer.com/paicoding/97601d7a337d7d944b02bb4a79cd6430.png)
 
-> 派聪明如何写到简历上：[https://paicoding.com/column/10/2](https://paicoding.com/column/10/2)
+> RAG知识库如何写到简历上：[https://paicoding.com/column/10/2](https://paicoding.com/column/10/2)
 
-![派聪明如何写到简历上](https://cdn.tobebetterjavaer.com/stutymore/xingqiuwenan2269-image4467.png)
+![RAG知识库如何写到简历上](https://cdn.tobebetterjavaer.com/stutymore/xingqiuwenan2269-image4467.png)
 
-这篇内容我先带大家了解一下什么是派聪明，我为什么要做派聪明这个企业级的 RAG 知识库？派聪明这个 AI 项目能让大家学到什么？以及如何解锁派聪明的源码仓库和教程？
+这篇内容我先带大家了解一下什么是RAG知识库，我为什么要做RAG知识库这个企业级的 RAG 知识库？RAG知识库这个 AI 项目能让大家学到什么？以及如何解锁RAG知识库的源码仓库和教程？
 
-![派聪明的聊天助手：会依据知识库进行问答](https://cdn.tobebetterjavaer.com/paicoding/2550c873a349d8bee29d46400f12ce76.png)
+![RAG知识库的聊天助手：会依据知识库进行问答](https://cdn.tobebetterjavaer.com/paicoding/2550c873a349d8bee29d46400f12ce76.png)
 
-## 一、派聪明的起源
+## 一、RAG知识库的起源
 
-了解技术派的球友应该知道，派聪明最初是[技术派实战项目](https://javabetter.cn/zhishixingqiu/paicoding.html)中一部分，主打的服务是和 AI 大模型进行聊天对话（没有检索增强生成）。
+了解技术派的球友应该知道，RAG知识库最初是[技术派实战项目](https://javabetter.cn/zhishixingqiu/paicoding.html)中一部分，主打的服务是和 AI 大模型进行聊天对话（没有检索增强生成）。
 
 技术派这个项目也是非常经典，帮助 24、25 届，以及 26 届同学斩获了很多超出预期的 offer，我们这里就不多讲了，只贴一个喜报，一位球友靠技术派和面渣逆袭，投了两周拿下小红书的日常实习。
 
@@ -44,27 +44,27 @@
 
 技术派这个项目如果你能认真学完，会收获非常非常多，基本上一个企业级的 Web 开发项目用到的技术栈，技术派都覆盖到了。
 
-![技术派的派聪明模块](https://cdn.tobebetterjavaer.com/paicoding/f661e0f448fd20532840b062f1019662.png)
+![技术派的RAG知识库模块](https://cdn.tobebetterjavaer.com/paicoding/f661e0f448fd20532840b062f1019662.png)
 
-那为了延续正宗的皇家血脉，我把**派聪明**这三个字延续到了新的 RAG 项目，也就是大家目前看到的这个派聪明 AI 知识库项目（界面还是非常清爽的 😄）。
+那为了延续正宗的皇家血脉，我把**RAG知识库**这三个字延续到了新的 RAG 项目，也就是大家目前看到的这个RAG知识库 AI 知识库项目（界面还是非常清爽的 😄）。
 
-![派聪明的聊天助手](https://cdn.tobebetterjavaer.com/paicoding/7e4d40bd09296ac248a1ff7d7296e51d.png)
+![RAG知识库的聊天助手](https://cdn.tobebetterjavaer.com/paicoding/7e4d40bd09296ac248a1ff7d7296e51d.png)
 
-![派聪明的知识库管理](https://cdn.tobebetterjavaer.com/paicoding/9e5f8f5b692c9873151fed631bcefa45.png)
+![RAG知识库的知识库管理](https://cdn.tobebetterjavaer.com/paicoding/9e5f8f5b692c9873151fed631bcefa45.png)
 
-![派聪明的组织标签](https://cdn.tobebetterjavaer.com/paicoding/dbaa6d1930cff66341c9f0f0e2c42459.png)
+![RAG知识库的组织标签](https://cdn.tobebetterjavaer.com/paicoding/dbaa6d1930cff66341c9f0f0e2c42459.png)
 
 做 AI 知识库的起源，当然还是 DeepSeek 刚出来那会，我在本地用 Ollama+DeepSeek+Anythingllm 搭了一个本地的面渣逆袭知识库，当时觉得这玩意挺有意思的。刚好星球球友 Lan 来找我说，要不一起做点事吧，我就把我这个想法交给他去落实了。
 
 当时我没有抱很大的期待，因为从一个 idea 萌芽到开花结果，真的很难，但 Lan 信守承诺，很快就把后端搭建好了。用了很多我觉得对大家求职很有帮助的技术栈，比如说 JDK17、ElasticSearch、MySQL、Redis、MinIO、Kafka 等等，并且涉及到了很多 AI 的知识，比如说目前很火的 RAG 技术。
 
-![派聪明的系统概述](https://cdn.tobebetterjavaer.com/stutymore/README-20250730102655.png)
+![RAG知识库的系统概述](https://cdn.tobebetterjavaer.com/stutymore/README-20250730102655.png)
 
-2025年4 月份的时候，机缘巧合，我和朋友【我糖呢】闲聊，就讲起这个项目，他已经悄咪咪的成为一名前端大佬，于是索性我就喊他来做前端，就这样，我们的派聪明团队就算是正式成立了。
+2025年4 月份的时候，机缘巧合，我和朋友【我糖呢】闲聊，就讲起这个项目，他已经悄咪咪的成为一名前端大佬，于是索性我就喊他来做前端，就这样，我们的RAG知识库团队就算是正式成立了。
 
 下个项目校招派，我打算把 MCP 和 Agent 也加进来。所以，这个项目在 AI 时代，绝对是一个明星级、现象级的实战项目。
 
-## 二、派聪明的技术栈
+## 二、RAG知识库的技术栈
 
 先说后端的：
 
@@ -126,15 +126,15 @@ frontend/
 └── ... # 构建配置文件
 ```
 
-## 三、派聪明的技术架构
+## 三、RAG知识库的技术架构
 
-看到一张图，和派聪明 RAG 知识库是比较吻合的，我直接贴出来，方便大家一睹为快。
+看到一张图，和RAG知识库 RAG 知识库是比较吻合的，我直接贴出来，方便大家一睹为快。
 
-![派聪明 RAG 知识库](https://cdn.tobebetterjavaer.com/paicoding/b693e6e8cdc26e06a3f6665adb77142e.png)
+![RAG知识库 RAG 知识库](https://cdn.tobebetterjavaer.com/paicoding/b693e6e8cdc26e06a3f6665adb77142e.png)
 
-底层大模型我们用的是 DeepSeek。上层的业务是，当你把企业私有的 Word、PDF、txt 丢给派聪明，他就会自动进行向量化处理，支持大文件的断点续传和分片上传，分片状态使用 Redis 的 BitMap 进行保存，文件本身通过 MinIO 进行存储。
+底层大模型我们用的是 DeepSeek。上层的业务是，当你把企业私有的 Word、PDF、txt 丢给RAG知识库，他就会自动进行向量化处理，支持大文件的断点续传和分片上传，分片状态使用 Redis 的 BitMap 进行保存，文件本身通过 MinIO 进行存储。
 
-![派聪明的文件上传模块](https://cdn.tobebetterjavaer.com/paicoding/5f2c00a60d7c39797f3bf14057d0469e.png)
+![RAG知识库的文件上传模块](https://cdn.tobebetterjavaer.com/paicoding/5f2c00a60d7c39797f3bf14057d0469e.png)
 
 具体来说，系统会使用 Apache Tika 从文档中提取出纯文本信息，然后将长文档智能切分成多个语义完整的文本块。
 
@@ -146,13 +146,13 @@ frontend/
 ![](https://files.mdnice.com/user/3903/ac9a748e-7b90-4d8d-8b66-9aa900d6b3d8.png)
 
 
-当用户提出问题后，派聪明会通过 ElasticSearch 进行混合检索：先进行语义的向量搜索，再进行关键词的精排。同时，会根据用户的组织权限，自动过滤出用户有权访问的文档内容。
+当用户提出问题后，RAG知识库会通过 ElasticSearch 进行混合检索：先进行语义的向量搜索，再进行关键词的精排。同时，会根据用户的组织权限，自动过滤出用户有权访问的文档内容。
 
 ![ES进行混合检索](https://cdn.tobebetterjavaer.com/paicoding/7bd580712564d9951c1379607fe8e4c5.png)
 
 之后，系统会将这些信息作为上下文，连同用户的问题一起发送给 DeepSeek。DeepSeek 会基于我们封装好的 Prompt，生成准确、相关的回答。整个对话过程采用流式输出，用户可以实时看到 AI 的回答过程，体验非常流畅。
 
-## 四、为什么要学习派聪明？
+## 四、为什么要学习RAG知识库？
 
 在大模型席卷全球的今天，掌握主流 Java 技术栈和 AI 工程化能力已成为学生党和工作党在求职中脱颖而出的关键。
 
@@ -160,23 +160,23 @@ frontend/
 
 ![阿里实习球友：没有 RAG 简历过不了](https://cdn.tobebetterjavaer.com/paicoding/0a9e5c9a12a4e433edba0c14c520d2fb.png)
 
-星球里也非常多球友在迫切地等待派聪明这个 RAG 项目，相信不用我过多的刻画，大家也都知道 AI 项目现在有多吃香。
+星球里也非常多球友在迫切地等待RAG知识库这个 RAG 项目，相信不用我过多的刻画，大家也都知道 AI 项目现在有多吃香。
 
 ![球友也一直在存 RAG](https://cdn.tobebetterjavaer.com/paicoding/9cef18d25edcaf16ee8d71e75a614e26.png)
 
-那经过 4 个多月的打磨和沉淀，派聪明的代码和文档在 2025 年 7 月 29 日这天算是告一段落了。
+那经过 4 个多月的打磨和沉淀，RAG知识库的代码和文档在 2025 年 7 月 29 日这天算是告一段落了。
 
-![终于派聪明告一段落了](https://cdn.tobebetterjavaer.com/paicoding/2000e4f629420f4c2e7f1b984c741ab5.png)
+![终于RAG知识库告一段落了](https://cdn.tobebetterjavaer.com/paicoding/2000e4f629420f4c2e7f1b984c741ab5.png)
 
-我相信，派聪明这个项目一定能解决大家的燃眉之急；我也相信，大家会在接下来的求职当中大展拳脚。
+我相信，RAG知识库这个项目一定能解决大家的燃眉之急；我也相信，大家会在接下来的求职当中大展拳脚。
 
 星球已经有了前后端分离项目技术派（里面也有 AI 的聊天对话服务），还有微服务项目 PmHub，以及轮子项目 mydb、涉及到 Spring AI 和 Agent 的校招派（同时进行的另外一个项目）等，这些就足够让大家“喝一壶”的了，教程和源码的获取方式可以查看 👉 星球的[第一个置顶帖球友必看](https://t.zsxq.com/91hPx)。
 
-> 派聪明教程：[https://paicoding.com/column/10/1](https://paicoding.com/column/10/1)
+> RAG知识库教程：[https://paicoding.com/column/10/1](https://paicoding.com/column/10/1)
 
 ![置顶帖球友必看](https://cdn.tobebetterjavaer.com/paicoding/047197ef09311d1be141530cbb5ab502.png)
 
-派聪明主打的技术栈和以上这些项目的技术栈也是完全不重叠的，尤其是 RAG 涉及到的一系列 AI 相关的内容，会让大家在 AI 时代吃进红利。
+RAG知识库主打的技术栈和以上这些项目的技术栈也是完全不重叠的，尤其是 RAG 涉及到的一系列 AI 相关的内容，会让大家在 AI 时代吃进红利。
 
 来看看每篇教程的字数吧，RAG 面试题 27 道，一共 10271 字，还有我亲自负责的手绘图；架构设计篇 25 道面试题，一共 11277 字，市面上能做到这种程度的教程，我敢拍着胸脯说，绝对对得起 100 多块钱的门票。
 
@@ -184,29 +184,29 @@ frontend/
 
 ![系统设计面试题](https://cdn.tobebetterjavaer.com/paicoding/7952178ea61b4a87e89a7ea177707d4a.png)
 
-看到这就想迫不及待地解锁派聪明源码和教程的同学，请扫下面的优惠券（或者长按自动识别）加入我们吧，[星球](https://javabetter.cn/zhishixingqiu/)目前定价 159 元/年，优惠完只需要 139 元，每天不到 0.38 元，绝对的超值。
+看到这就想迫不及待地解锁RAG知识库源码和教程的同学，请扫下面的优惠券（或者长按自动识别）加入我们吧，[星球](https://javabetter.cn/zhishixingqiu/)目前定价 159 元/年，优惠完只需要 139 元，每天不到 0.38 元，绝对的超值。
 
-![派聪明优惠券](https://cdn.tobebetterjavaer.com/paicoding/97601d7a337d7d944b02bb4a79cd6430.png)
+![RAG知识库优惠券](https://cdn.tobebetterjavaer.com/paicoding/97601d7a337d7d944b02bb4a79cd6430.png)
 
 超超超低价给到大家，你去其他机构/社群对比一下，这种硬核的教程和源码最起码要价 1999 元，我们现在只要一百多，为的就是尽量减轻大家的钱包负担，我希望用自己最大的诚意，去俘获大家发自内心的口碑。
 
 ![球友们对星球的真实评价](https://cdn.tobebetterjavaer.com/paicoding/378ea370a2f7a378835c50988ba53014.png)
 
-## 五、如何给面试官介绍派聪明？
+## 五、如何给面试官介绍RAG知识库？
 
 答：
 
-派聪明作为一个基于 RAG 架构的企业级 AI 知识库系统，其核心意义在于解决现代企业知识管理的痛点，推动组织智能化转型。在信息爆炸的时代，企业积累了大量文档资料，但传统的文件管理方式导致知识孤岛现象严重，员工难以快速获取所需信息，严重影响工作效率。
+RAG知识库作为一个基于 RAG 架构的企业级 AI 知识库系统，其核心意义在于解决现代企业知识管理的痛点，推动组织智能化转型。在信息爆炸的时代，企业积累了大量文档资料，但传统的文件管理方式导致知识孤岛现象严重，员工难以快速获取所需信息，严重影响工作效率。
 
-![派聪明的架构概览](https://cdn.tobebetterjavaer.com/stutymore/README-20250730101618.png)
+![RAG知识库的架构概览](https://cdn.tobebetterjavaer.com/stutymore/README-20250730101618.png)
 
-派聪明通过集成 Apache Tika 文档解析、豆包 Embedding 向量模型、Elasticsearch 混合检索技术和 DeepSeek API，构建了一套完整的智能知识处理流水线。
+RAG知识库通过集成 Apache Tika 文档解析、豆包 Embedding 向量模型、Elasticsearch 混合检索技术和 DeepSeek API，构建了一套完整的智能知识处理流水线。
 
 系统能够自动解析 Word、PDF、TXT 等文档，将非结构化信息转化为可检索的知识资产。更重要的是，基于语义理解的向量检索技术突破了传统关键词匹配的局限，用户通过自然语言描述就能够获得要检索的相关内容。
 
 ![ANN找出语义接近的向量](https://cdn.tobebetterjavaer.com/paicoding/27295a1412addf313a9be871381a385b.png)
 
-与依赖预训练的模型不同，RAG 能够实时检索最新的企业内部知识，避免模型幻觉，保持回答的准确性。除此之外，派聪明还实现了细粒度的多租户权限控制，确保不同部门和层级的用户只能访问授权范围内的知识。流式的 AI 聊天功也能让知识获取更加自然和高效。
+与依赖预训练的模型不同，RAG 能够实时检索最新的企业内部知识，避免模型幻觉，保持回答的准确性。除此之外，RAG知识库还实现了细粒度的多租户权限控制，确保不同部门和层级的用户只能访问授权范围内的知识。流式的 AI 聊天功也能让知识获取更加自然和高效。
 
 那假如面试官继续追问：你对 RAG 技术了解多少？你可以这样作答。
 
@@ -214,19 +214,19 @@ RAG，也就是检索增强生成，是当前 AI 领域的一项重要技术，�
 
 ![RAG 减少幻觉](https://cdn.tobebetterjavaer.com/paicoding/aeb6326dd7be502629f9909fb4b0b049.png)
 
-在我参与的派聪明项目中，我们深度实践了 RAG 的技术架构。具体来说，我们的系统分为三个核心环节：
+在我参与的RAG知识库项目中，我们深度实践了 RAG 的技术架构。具体来说，我们的系统分为三个核心环节：
 
 - 首先是知识入库阶段，我们使用 Apache Tika 解析各种格式的企业文档，然后调用豆包的 Embedding 模型将文本转换为向量表示，并存储到 Elasticsearch。
 - 其次是检索阶段，当用户提问时，我们同样将问题向量化，然后在 Elasticsearch 中进行混合检索，既包括传统的关键词匹配，也包括基于向量相似度的语义搜索，确保能找到最相关的知识片段。
 - 最后是生成阶段，我们将检索到的相关文档作为上下文，连同用户问题一起发送给 DeepSeek，让 AI 基于真实的企业知识来生成准确的回答。
 
-通过派聪明项目的实践，我深刻体会到 RAG 技术的价值所在。它不仅解决了大模型知识更新滞后的问题，更重要的是为企业级 AI 应用提供了可靠的技术路径。这种“有据可查”的 AI 问答方式，让企业用户能够放心地将 RAG 系统应用到实际业务场景中，真正实现 AI 技术的落地。
+通过RAG知识库项目的实践，我深刻体会到 RAG 技术的价值所在。它不仅解决了大模型知识更新滞后的问题，更重要的是为企业级 AI 应用提供了可靠的技术路径。这种“有据可查”的 AI 问答方式，让企业用户能够放心地将 RAG 系统应用到实际业务场景中，真正实现 AI 技术的落地。
 
-## 六、派聪明提供了哪些大模型开发经验？
+## 六、RAG知识库提供了哪些大模型开发经验？
 
 ### 01、RAG
 
-派聪明最核心的能力就是 RAG，后面还打算增加 MCP 和 Agent 能力，可以说覆盖了整个大模型应用开发的落地经验，并且我们会围绕 RAG 把 AI 相关的一些高频面试题全部讲透。
+RAG知识库最核心的能力就是 RAG，后面还打算增加 MCP 和 Agent 能力，可以说覆盖了整个大模型应用开发的落地经验，并且我们会围绕 RAG 把 AI 相关的一些高频面试题全部讲透。
 
 ![RAG的查询](https://cdn.tobebetterjavaer.com/paicoding/57a300255f7cb9bd1ff093a3fb85eb1b.png)
 
@@ -260,7 +260,7 @@ public void vectorizeFile(MultipartFile file, String userId, String orgTag, bool
 
 ![向量数据库](https://cdn.tobebetterjavaer.com/paicoding/8d53a234c2e8cf4be0d8189d49950ce2.png)
 
-那基于向量知识库的语义检索，虽然解决了传统关键词匹配的局限性，但显然关键词搜索这种场景还是需要的，所以派聪明兼具了关键词检索和语义检索两种能力。
+那基于向量知识库的语义检索，虽然解决了传统关键词匹配的局限性，但显然关键词搜索这种场景还是需要的，所以RAG知识库兼具了关键词检索和语义检索两种能力。
 
 ![CSDN@智兔唯新](https://cdn.tobebetterjavaer.com/paicoding/ab8396ec99cdd47ffb948325ee43e666.png)
 
@@ -276,11 +276,11 @@ public void vectorizeFile(MultipartFile file, String userId, String orgTag, bool
 
 都是 AI 时代非常关键的技术能力。那除了调用 DeepSeek API，我们还支持本地私有的 DeepSeek R1 模型部署。
 
-## 七、派聪明提供了哪些企业级技术栈？
+## 七、RAG知识库提供了哪些企业级技术栈？
 
 ### 01、Spring Boot 3.4.2+JDK17
 
-派聪明基于 Spring Boot 3.4.2 版本，使用 Java 17 作为开发语言。
+RAG知识库基于 Spring Boot 3.4.2 版本，使用 Java 17 作为开发语言。
 
 ![Spring Boot 3.4.2+JDK17](https://cdn.tobebetterjavaer.com/paicoding/249d872fe674df0c1918f34ea5e407f2.png)
 
@@ -288,13 +288,13 @@ public void vectorizeFile(MultipartFile file, String userId, String orgTag, bool
 
 ### 02、Kafka+Redis+MinIO
 
-派聪明通过 Kafka 实现异步任务调度，使用 Redis 缓存优化对话上下文管理，基于 MinIO 实现大文件分片上传与断点续传。
+RAG知识库通过 Kafka 实现异步任务调度，使用 Redis 缓存优化对话上下文管理，基于 MinIO 实现大文件分片上传与断点续传。
 
 Redis 的八股就不用多说了，有[面渣逆袭 Redis 篇](https://javabetter.cn/sidebar/sanfene/redis.html)，技术派和 PmHub 中都没有用 Kafka，用的的 RabbitMQ 和 RocketMQ，这次把消息队列中的 Kafka 直接补齐，从此以后再也不用担心 MQ 没有落地经验了（齐活）。
 
 ![Kafka八股](https://cdn.tobebetterjavaer.com/paicoding/82c03ebd7419d4e37f2314e6ec454be5.png)
 
-MinIO 的话，在处理文件的时候也经常用到，[编程喵当时有讲到](https://www.yuque.com/itwanger/vn4p17/ta5vr1)，但技术派和 PmHub 中都没有应用，这次派聪明我们也一并补齐了。
+MinIO 的话，在处理文件的时候也经常用到，[编程喵当时有讲到](https://www.yuque.com/itwanger/vn4p17/ta5vr1)，但技术派和 PmHub 中都没有应用，这次RAG知识库我们也一并补齐了。
 
 ![MinIO的应用](https://cdn.tobebetterjavaer.com/paicoding/689747578161e984eee744f396f51094.png)
 
@@ -306,19 +306,19 @@ MinIO 的话，在处理文件的时候也经常用到，[编程喵当时有讲�
 
 ### 04、Vue 3+TypeScript+Vite
 
-派聪明全面采用了 Vue 3 的 Composition API，技术派当时用的是 React，等于说前端的三驾马车就只剩下了 Angular。
+RAG知识库全面采用了 Vue 3 的 Composition API，技术派当时用的是 React，等于说前端的三驾马车就只剩下了 Angular。
 
-![派聪明用了 Vue](https://cdn.tobebetterjavaer.com/paicoding/019d7cdded144f2169256e473ce0431d.png)
+![RAG知识库用了 Vue](https://cdn.tobebetterjavaer.com/paicoding/019d7cdded144f2169256e473ce0431d.png)
 
 状态管理采用了 Pinia 这一 Vue 3 官方推荐的状态管理库，相比 Vuex 具有更好的 TypeScript 支持和更简洁的 API 设计。状态管理的模块包含主题管理（theme）、路由管理（route）、标签页管理（tab）、认证管理（auth）、应用状态（app）等。
 
-![派聪明用到的Pinia](https://cdn.tobebetterjavaer.com/paicoding/730208c77236a504b8b807ddc5c104a2.png)
+![RAG知识库用到的Pinia](https://cdn.tobebetterjavaer.com/paicoding/730208c77236a504b8b807ddc5c104a2.png)
 
-在 vite.config.ts 中，派聪明配置了完整的开发和生产环境构建策略。Vite 的配置支持环境变量加载（ loadEnv ），实现了不同环境下的差异化配置，如开发环境的代理设置、生产环境的优化策略等。
+在 vite.config.ts 中，RAG知识库配置了完整的开发和生产环境构建策略。Vite 的配置支持环境变量加载（ loadEnv ），实现了不同环境下的差异化配置，如开发环境的代理设置、生产环境的优化策略等。
 
 整个前端采用了 Monorepo 架构，在 frontend/packages 目录下组织了多个独立的功能包，包括 axios 封装、颜色工具、hooks 库、UI 组件、工具函数等。特别值得关注的是 index.ts 中的 HTTP 客户端封装，项目基于 axios 实现了企业级的请求库，支持请求/响应拦截、错误处理、请求取消、重试机制等高级功能。
 
-![派聪明前端采用Monorepo架构](https://cdn.tobebetterjavaer.com/paicoding/5457a9a50ebcb68a7f81c40a396ac305.png)
+![RAG知识库前端采用Monorepo架构](https://cdn.tobebetterjavaer.com/paicoding/5457a9a50ebcb68a7f81c40a396ac305.png)
 
 ### 05、JWT+Spring Security+RBAC
 
@@ -326,7 +326,7 @@ MinIO 的话，在处理文件的时候也经常用到，[编程喵当时有讲�
 
 ![JWT+Spring Security](https://cdn.tobebetterjavaer.com/paicoding/bebeb4d8d20c4cc0fcbe88a7fa813180.png)
 
-派聪明的多租户权限控制设计了三个层级，非常贴合企业的实际需求。第一层是私人空间权限，以“PRIVATE\_”前缀标识的组织标签，只有资源的创建者才能访问，保证用户个人数据的绝对安全。第二层是组织权限，同一个组织标签下的用户可以共享资源，满足团队协作的需求。第三层是公开权限，标记为公开的资源所有用户都能访问，适用于公司公告、共享文档等场景。
+RAG知识库的多租户权限控制设计了三个层级，非常贴合企业的实际需求。第一层是私人空间权限，以“PRIVATE\_”前缀标识的组织标签，只有资源的创建者才能访问，保证用户个人数据的绝对安全。第二层是组织权限，同一个组织标签下的用户可以共享资源，满足团队协作的需求。第三层是公开权限，标记为公开的资源所有用户都能访问，适用于公司公告、共享文档等场景。
 
 ![RBAC](https://cdn.tobebetterjavaer.com/paicoding/cda9a817ecda87a5a609986fd9008401.png)
 
@@ -336,17 +336,17 @@ MinIO 的话，在处理文件的时候也经常用到，[编程喵当时有讲�
 
 ![Mockito+TDD](https://cdn.tobebetterjavaer.com/paicoding/e2adadd787040c8dcbab4750ec75efe7.png)
 
-## 八、解锁派聪明源码+教程
+## 八、解锁RAG知识库源码+教程
 
 那这次为了避免盗版，这次的代码仓库采用的是邀请制，加入星球后，在星球第一个置顶帖【球友必看】中获取邀请链接，审核通过后即可查看。
 
-![派聪明的源码申请](https://cdn.tobebetterjavaer.com/paicoding/0abd7b441b744b33d48277be776e58cc.png)
+![RAG知识库的源码申请](https://cdn.tobebetterjavaer.com/paicoding/0abd7b441b744b33d48277be776e58cc.png)
 
-派聪明的教程，这次托管在技术派教程上，之前只要在技术派上绑定过星球的成员编号，均可以解锁查看。
+RAG知识库的教程，这次托管在技术派教程上，之前只要在技术派上绑定过星球的成员编号，均可以解锁查看。
 
-> 派聪明教程地址：[https://paicoding.com/column/10/1](https://paicoding.com/column/10/1)
+> RAG知识库教程地址：[https://paicoding.com/column/10/1](https://paicoding.com/column/10/1)
 
-![派聪明教程](https://cdn.tobebetterjavaer.com/paicoding/a157a62358a6b3c2dab478988143271a.png)
+![RAG知识库教程](https://cdn.tobebetterjavaer.com/paicoding/a157a62358a6b3c2dab478988143271a.png)
 
 并且了照顾大家的阅读习惯，我们也会在星球里第一时间同步。
 
@@ -354,7 +354,7 @@ MinIO 的话，在处理文件的时候也经常用到，[编程喵当时有讲�
 
 加入[「yzt的编程星球」](https://javabetter.cn/zhishixingqiu/)后，你还可以享受以下专属内容服务：
 
-- 1、**付费文档:** [PaiFlow工作流Agent](https://javabetter.cn/zhishixingqiu/paiflow.html)、[派聪明 RAG](https://javabetter.cn/zhishixingqiu/paismart.html)、[微服务 PmHub](https://javabetter.cn/zhishixingqiu/pmhub.html)、[前后端分离技术派](https://javabetter.cn/zhishixingqiu/paicoding.html)、轮子 MYDB、入门编程喵、Agent+MCP 的校招派、类 dify 工作流 PaiAgent、派简历等项目配套的 60 万+ 字教程查看权限
+- 1、**付费文档:** [PaiFlow工作流Agent](https://javabetter.cn/zhishixingqiu/paiflow.html)、[RAG知识库 RAG](https://javabetter.cn/zhishixingqiu/paismart.html)、[微服务 PmHub](https://javabetter.cn/zhishixingqiu/pmhub.html)、[前后端分离技术派](https://javabetter.cn/zhishixingqiu/paicoding.html)、轮子 MYDB、入门编程喵、Agent+MCP 的校招派、类 dify 工作流 PaiAgent、派简历等项目配套的 60 万+ 字教程查看权限
 - 2、**简历修改**: 提供价值超 600 元的[简历修改服务](https://javabetter.cn/zhishixingqiu/jianli.html)，附赠星球 5000+优质简历模板可供参考
 - 3、**专属问答**: 向yzt和星球嘉宾发起 1v1 提问，内容不限于 offer 选择、学习路线、职业规划等
 - 4、**面试指南**: 获取针对校招、社招的 40 万+字面试求职攻略《[Java 面试指南](https://javabetter.cn/zhishixingqiu/mianshi.html)》，以及yzt的 LeetCode 刷题笔记、一灰的职场进阶之路、华为 OD 题库
@@ -366,13 +366,13 @@ MinIO 的话，在处理文件的时候也经常用到，[编程喵当时有讲�
 
 ![阿里云荣耀字节](https://cdn.tobebetterjavaer.com/stutymore/readme-20250703180738.png)
 
-目前，派聪明这个项目也完结了，大家可以放心冲 😊。26 届秋招可以说发了大力。
+目前，RAG知识库这个项目也完结了，大家可以放心冲 😊。26 届秋招可以说发了大力。
 
 ![](https://cdn.tobebetterjavaer.com/stutymore/paicongming7458-image3628.png)
 
 并且一次购买不需要额外付费，即可获取星球的所有付费资料，帮助你少走弯路，提高学习的效率。直接微信扫下面这个优惠券即可加入。
 
-![派聪明优惠券](https://cdn.tobebetterjavaer.com/paicoding/97601d7a337d7d944b02bb4a79cd6430.png)
+![RAG知识库优惠券](https://cdn.tobebetterjavaer.com/paicoding/97601d7a337d7d944b02bb4a79cd6430.png)
 
 > 步骤 ①：微信扫描上方二维码，点击「加入知识星球」按钮
 > 步骤 ②：访问星球置顶帖球友必看：[https://t.zsxq.com/11rEo9Pdu](https://t.zsxq.com/11rEo9Pdu)，获取项目的源码和配套教程
@@ -381,17 +381,17 @@ MinIO 的话，在处理文件的时候也经常用到，[编程喵当时有讲�
 
 0 人的时候优惠完 69 元，1000 人的时候 79 元，2000 人的时候 89 元，3000 人的时候 99 元，5000 人的时候是 119 元，后面肯定还会继续涨。
 
-付费社群我加入了很多，但从未见过比这更低价格，提供更多服务的社群，光派聪明这个项目的就能让你值回票价。
+付费社群我加入了很多，但从未见过比这更低价格，提供更多服务的社群，光RAG知识库这个项目的就能让你值回票价。
 
-多说一句，任何时候，技术都是我们程序员的安身立命之本，如果你能认认真真跟完派聪明的源码和教程，相信你的编程功底会提升一大截。
+多说一句，任何时候，技术都是我们程序员的安身立命之本，如果你能认认真真跟完RAG知识库的源码和教程，相信你的编程功底会提升一大截。
 
-再给大家展示一下派聪明教程的部分目录吧，真的是满满的诚意和干货。
+再给大家展示一下RAG知识库教程的部分目录吧，真的是满满的诚意和干货。
 
-![派聪明整体设计方案](https://cdn.tobebetterjavaer.com/paicoding/0a19e199cfe0c5a67f142f678124c2d6.png)
+![RAG知识库整体设计方案](https://cdn.tobebetterjavaer.com/paicoding/0a19e199cfe0c5a67f142f678124c2d6.png)
 
-![派聪明 prompt](https://cdn.tobebetterjavaer.com/paicoding/6b670c22740e9e7b3dfae35fd646196e.png)
+![RAG知识库 prompt](https://cdn.tobebetterjavaer.com/paicoding/6b670c22740e9e7b3dfae35fd646196e.png)
 
-![派聪明教程目录](https://cdn.tobebetterjavaer.com/paicoding/1e5e0055300a70a4cb83791f889bec20.png)
+![RAG知识库教程目录](https://cdn.tobebetterjavaer.com/paicoding/1e5e0055300a70a4cb83791f889bec20.png)
 
 之前就有球友反馈说，“**yzt，你这套教程如果让培训机构来卖，1999 元都算少！**
 
@@ -401,7 +401,7 @@ MinIO 的话，在处理文件的时候也经常用到，[编程喵当时有讲�
 
 我们的代码，严格按照大厂的标准来，无论是整体的架构，还是具体的细节，都是无可挑剔的学习对象。
 
-![派聪明的代码细节](https://cdn.tobebetterjavaer.com/paicoding/0d2b52387576b0884e832c05594fc9de.png)
+![RAG知识库的代码细节](https://cdn.tobebetterjavaer.com/paicoding/0d2b52387576b0884e832c05594fc9de.png)
 
 之前曾有球友问我：“yzt，你的星球怎么不定价 199、299、399 啊，我感觉星球提供的价值远超这个价格啊。”
 
@@ -415,6 +415,6 @@ MinIO 的话，在处理文件的时候也经常用到，[编程喵当时有讲�
 
 最后，希望同学们，能紧跟我们的步伐！不要掉队。今年，和yzt一起翻身、一起逆袭、一起晋升、一起拿高薪 offer！
 
-那无论你是社招还是校招，我们都希望你通过派聪明这个项目，能提升自己的简历含金量，拿到更好的 offer，也能更加从容的应对面试中各种 AI 相关的考察。
+那无论你是社招还是校招，我们都希望你通过RAG知识库这个项目，能提升自己的简历含金量，拿到更好的 offer，也能更加从容的应对面试中各种 AI 相关的考察。
 
 冲。

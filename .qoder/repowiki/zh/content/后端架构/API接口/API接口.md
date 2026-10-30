@@ -57,10 +57,10 @@
 12. [结论](#结论)
 
 ## 简介
-本文档为PaiSmart后端RESTful API的完整技术文档，详细记录了系统的认证、聊天、文档上传、搜索、充值管理、邀请码和模型提供商配置等核心功能模块。文档涵盖了各API端点的HTTP方法、URL路径、请求参数、响应结构、状态码含义及错误处理机制。特别说明了基于JWT的认证机制在各接口中的应用，包括认证头格式和令牌刷新流程。通过详细的代码分析和可视化图表，为开发者提供了全面的系统理解。
+本文档为RAG知识库后端RESTful API的完整技术文档，详细记录了系统的认证、聊天、文档上传、搜索、充值管理、邀请码和模型提供商配置等核心功能模块。文档涵盖了各API端点的HTTP方法、URL路径、请求参数、响应结构、状态码含义及错误处理机制。特别说明了基于JWT的认证机制在各接口中的应用，包括认证头格式和令牌刷新流程。通过详细的代码分析和可视化图表，为开发者提供了全面的系统理解。
 
 ## 项目结构
-PaiSmart项目采用前后端分离的架构设计，后端基于Spring Boot框架构建RESTful API服务，前端使用Vue.js框架。项目主要分为`frontend`和`src`两个目录，分别存放前端和后端代码。
+RAG知识库项目采用前后端分离的架构设计，后端基于Spring Boot框架构建RESTful API服务，前端使用Vue.js框架。项目主要分为`frontend`和`src`两个目录，分别存放前端和后端代码。
 
 ```mermaid
 graph TD
@@ -99,7 +99,7 @@ end
 - [项目结构:1-100](file://#L1-L100)
 
 ## 核心组件
-PaiSmart系统的核心功能由多个关键组件构成，包括认证管理、聊天交互、文档处理、搜索服务、充值管理、邀请码管理和模型提供商配置。这些组件通过清晰的分层架构协同工作，确保系统的稳定性和可扩展性。
+RAG知识库系统的核心功能由多个关键组件构成，包括认证管理、聊天交互、文档处理、搜索服务、充值管理、邀请码管理和模型提供商配置。这些组件通过清晰的分层架构协同工作，确保系统的稳定性和可扩展性。
 
 **本节来源**
 - [AuthController.java:1-86](file://src/main/java/com/yizhaoqi/smartpai/controller/AuthController.java#L1-L86)
@@ -109,7 +109,7 @@ PaiSmart系统的核心功能由多个关键组件构成，包括认证管理、
 - [AdminController.java:396-448](file://src/main/java/com/yizhaoqi/smartpai/controller/AdminController.java#L396-L448)
 
 ## 架构概览
-PaiSmart系统采用典型的分层架构，从前端到后端各层职责分明。系统通过RESTful API与前端交互，使用JWT进行身份认证，利用MinIO存储文件，Elasticsearch提供搜索能力，Redis用于缓存和会话管理，同时集成了微信支付、邀请码管理和模型提供商配置等业务功能。
+RAG知识库系统采用典型的分层架构，从前端到后端各层职责分明。系统通过RESTful API与前端交互，使用JWT进行身份认证，利用MinIO存储文件，Elasticsearch提供搜索能力，Redis用于缓存和会话管理，同时集成了微信支付、邀请码管理和模型提供商配置等业务功能。
 
 ```mermaid
 graph TB
@@ -209,7 +209,7 @@ JwtUtils --> User : "提取信息"
 - [UserService.java:1-200](file://src/main/java/com/yizhaoqi/smartpai/service/UserService.java#L1-L200)
 
 ### 聊天组件分析
-聊天组件是PaiSmart的核心功能之一，支持WebSocket实时通信，提供流式响应的聊天体验。系统通过混合搜索服务获取相关知识，调用DeepSeek API生成回复，并管理对话历史。
+聊天组件是RAG知识库的核心功能之一，支持WebSocket实时通信，提供流式响应的聊天体验。系统通过混合搜索服务获取相关知识，调用DeepSeek API生成回复，并管理对话历史。
 
 #### 聊天序列图
 ```mermaid
@@ -577,7 +577,7 @@ ScopeSettingsView --> ProviderConfigView : "包含"
 - [ModelProviderConfigRepository.java:1-16](file://src/main/java/com/yizhaoqi/smartpai/repository/ModelProviderConfigRepository.java#L1-L16)
 
 ## 依赖分析
-PaiSmart系统的各组件之间存在明确的依赖关系，形成了清晰的服务调用链。通过依赖分析，可以更好地理解系统的架构设计和数据流动。
+RAG知识库系统的各组件之间存在明确的依赖关系，形成了清晰的服务调用链。通过依赖分析，可以更好地理解系统的架构设计和数据流动。
 
 ```mermaid
 graph TD
@@ -628,7 +628,7 @@ class MinioClient,ElasticsearchClient,EmbeddingClient,DeepSeekClient,WxPayServic
 - [项目依赖关系:1-100](file://#L1-L100)
 
 ## 性能考量
-PaiSmart系统在设计时充分考虑了性能因素，采用了多种优化策略来提升系统响应速度和处理能力。
+RAG知识库系统在设计时充分考虑了性能因素，采用了多种优化策略来提升系统响应速度和处理能力。
 
 1. **缓存机制**：使用Redis缓存用户组织标签、分片上传状态、模型配置等频繁访问的数据，减少数据库查询压力。
 2. **异步处理**：文件处理任务通过Kafka消息队列异步执行，避免阻塞主线程；支付回调采用异步处理机制。
@@ -736,4 +736,4 @@ PaiSmart系统在设计时充分考虑了性能因素，采用了多种优化策
 - [ModelProviderConfigService.java:1-482](file://src/main/java/com/yizhaoqi/smartpai/service/ModelProviderConfigService.java#L1-L482)
 
 ## 结论
-PaiSmart后端系统采用现代化的技术栈和清晰的架构设计，实现了认证、聊天、文档管理、搜索、充值管理、邀请码和模型提供商配置等核心功能。系统通过JWT进行安全认证，利用WebSocket提供实时聊天体验，采用分片上传机制处理大文件，结合向量搜索和文本匹配实现智能搜索，集成了微信支付、邀请码管理和模型配置等完整的业务功能。各组件职责分明，依赖关系清晰，具有良好的可维护性和扩展性。通过合理的性能优化和错误处理机制，系统能够稳定高效地运行，为用户提供优质的服务体验。
+RAG知识库后端系统采用现代化的技术栈和清晰的架构设计，实现了认证、聊天、文档管理、搜索、充值管理、邀请码和模型提供商配置等核心功能。系统通过JWT进行安全认证，利用WebSocket提供实时聊天体验，采用分片上传机制处理大文件，结合向量搜索和文本匹配实现智能搜索，集成了微信支付、邀请码管理和模型配置等完整的业务功能。各组件职责分明，依赖关系清晰，具有良好的可维护性和扩展性。通过合理的性能优化和错误处理机制，系统能够稳定高效地运行，为用户提供优质的服务体验。

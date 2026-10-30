@@ -20,14 +20,14 @@
 9. [结论](#结论)
 
 ## 简介
-本文档详细说明了如何为PaiSmart后端Spring Boot应用构建Docker镜像。尽管项目中未直接提供Dockerfile，但通过分析pom.xml配置、资源文件和项目结构，可以推断出完整的Docker镜像构建策略。该策略采用多阶段构建方法，利用Maven进行编译，并通过spring-boot-maven-plugin生成可执行JAR包，最终使用精简的JRE镜像运行应用。同时，文档还说明了如何集成前端构建产物以实现前后端统一部署。
+本文档详细说明了如何为RAG知识库后端Spring Boot应用构建Docker镜像。尽管项目中未直接提供Dockerfile，但通过分析pom.xml配置、资源文件和项目结构，可以推断出完整的Docker镜像构建策略。该策略采用多阶段构建方法，利用Maven进行编译，并通过spring-boot-maven-plugin生成可执行JAR包，最终使用精简的JRE镜像运行应用。同时，文档还说明了如何集成前端构建产物以实现前后端统一部署。
 
 ## 项目结构
-PaiSmart项目采用标准的Maven多模块结构，后端代码位于`src/main/java`目录下，前端代码位于`frontend`目录。后端资源文件（`src/main/resources`）包含配置文件和静态资源目录，是实现前后端集成的关键。
+RAG知识库项目采用标准的Maven多模块结构，后端代码位于`src/main/java`目录下，前端代码位于`frontend`目录。后端资源文件（`src/main/resources`）包含配置文件和静态资源目录，是实现前后端集成的关键。
 
 ```mermaid
 graph TB
-root["PaiSmart (项目根目录)"]
+root["RAG知识库 (项目根目录)"]
 backend["后端 (src/main)"]
 frontend["前端 (frontend)"]
 java["Java源码 (java/com/yizhaoqi/smartpai)"]
@@ -53,14 +53,14 @@ resources --> es_mappings
 - [src/main/resources](file://src/main/resources)
 
 ## 核心组件
-构建PaiSmart后端Docker镜像的核心在于`pom.xml`中的Maven配置和`src/main/resources`中的资源管理。`spring-boot-maven-plugin`负责生成可执行的Fat JAR，而`static`目录则用于存放前端构建产物，实现一体化部署。
+构建RAG知识库后端Docker镜像的核心在于`pom.xml`中的Maven配置和`src/main/resources`中的资源管理。`spring-boot-maven-plugin`负责生成可执行的Fat JAR，而`static`目录则用于存放前端构建产物，实现一体化部署。
 
 **Section sources**
 - [pom.xml](file://pom.xml#L169-L201)
 - [src/main/resources/static](file://src/main/resources/static)
 
 ## 架构概述
-PaiSmart后端的Docker构建遵循典型的多阶段构建模式。第一阶段使用Maven基础镜像编译源码并打包，利用Maven的依赖缓存机制加速构建过程。第二阶段则使用一个轻量级的JRE镜像（如`eclipse-temurin:17-jre-alpine`）作为运行时环境，将第一阶段生成的JAR包复制到镜像中并运行。
+RAG知识库后端的Docker构建遵循典型的多阶段构建模式。第一阶段使用Maven基础镜像编译源码并打包，利用Maven的依赖缓存机制加速构建过程。第二阶段则使用一个轻量级的JRE镜像（如`eclipse-temurin:17-jre-alpine`）作为运行时环境，将第一阶段生成的JAR包复制到镜像中并运行。
 
 ```mermaid
 graph LR
@@ -111,7 +111,7 @@ E --> B
 spring:
   data:
     redis:
-      password: PaiSmart2025 # Docker环境专用密码
+      password: RAG知识库2025 # Docker环境专用密码
 ```
 
 **Section sources**
@@ -139,7 +139,7 @@ G --> H[Docker 镜像]
 - [src/main/resources/static](file://src/main/resources/static)
 
 ## 依赖分析
-PaiSmart后端的依赖关系清晰，主要通过`pom.xml`进行管理。关键依赖包括Spring Boot Starter系列、MySQL驱动、Redis客户端、MinIO SDK、Elasticsearch客户端和Kafka支持。这些依赖在Maven构建阶段被下载并打包进最终的JAR文件中。
+RAG知识库后端的依赖关系清晰，主要通过`pom.xml`进行管理。关键依赖包括Spring Boot Starter系列、MySQL驱动、Redis客户端、MinIO SDK、Elasticsearch客户端和Kafka支持。这些依赖在Maven构建阶段被下载并打包进最终的JAR文件中。
 
 ```mermaid
 graph TD
@@ -176,4 +176,4 @@ A --> I[spring-kafka]
 - [src/main/resources/static](file://src/main/resources/static)
 
 ## 结论
-尽管PaiSmart项目当前缺少Dockerfile，但其结构和配置已为Docker化部署做好了充分准备。通过实施多阶段Docker构建策略，可以高效地创建一个轻量、安全且易于部署的后端镜像。关键步骤包括：利用`spring-boot-maven-plugin`生成可执行JAR、通过Profile管理环境配置、将前端构建产物集成到`static`目录，以及在运行时通过JVM参数优化性能。建议项目团队补充Dockerfile以实现CI/CD流程的自动化。
+尽管RAG知识库项目当前缺少Dockerfile，但其结构和配置已为Docker化部署做好了充分准备。通过实施多阶段Docker构建策略，可以高效地创建一个轻量、安全且易于部署的后端镜像。关键步骤包括：利用`spring-boot-maven-plugin`生成可执行JAR、通过Profile管理环境配置、将前端构建产物集成到`static`目录，以及在运行时通过JVM参数优化性能。建议项目团队补充Dockerfile以实现CI/CD流程的自动化。

@@ -444,7 +444,7 @@ onUnmounted(() => {
       <textarea
         ref="inputRef"
         v-model.trim="input.message"
-        placeholder="给 派聪明 发送消息，Enter 发送，Shift+Enter 换行"
+        placeholder="给 RAG知识库 发送消息，Enter 发送，Shift+Enter 换行"
         class="text-body max-h-32 min-h-6 w-full flex-1 resize-none border-none bg-transparent py-1 text-14px caret-[rgb(var(--primary-color))] outline-none"
         @keydown="handShortcut"
       />

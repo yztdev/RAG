@@ -23,10 +23,10 @@
 9. [结论](#结论)
 
 ## 简介
-本文档详细说明了为 PaiSmart 前端应用（基于 Vue 3 + Vite）构建 Docker 镜像的完整流程。文档涵盖了使用 Node.js 基础镜像进行多阶段构建的详细过程，包括依赖安装、静态资源生成和 Nginx 托管。同时，深入分析了 `vite.config.ts` 中的 `base` 配置如何影响资源路径，以及如何通过环境变量实现不同环境的动态构建。文档还提供了优化建议，包括层缓存、.dockerignore 配置、静态资源压缩和 Gzip 支持。
+本文档详细说明了为 RAG知识库 前端应用（基于 Vue 3 + Vite）构建 Docker 镜像的完整流程。文档涵盖了使用 Node.js 基础镜像进行多阶段构建的详细过程，包括依赖安装、静态资源生成和 Nginx 托管。同时，深入分析了 `vite.config.ts` 中的 `base` 配置如何影响资源路径，以及如何通过环境变量实现不同环境的动态构建。文档还提供了优化建议，包括层缓存、.dockerignore 配置、静态资源压缩和 Gzip 支持。
 
 ## 项目结构
-PaiSmart 项目采用前后端分离的架构。前端应用位于 `frontend` 目录下，使用 Vue 3 和 Vite 构建。后端服务使用 Spring Boot 开发。整个应用通过 `docker-compose.yaml` 文件进行容器化部署。
+RAG知识库 项目采用前后端分离的架构。前端应用位于 `frontend` 目录下，使用 Vue 3 和 Vite 构建。后端服务使用 Spring Boot 开发。整个应用通过 `docker-compose.yaml` 文件进行容器化部署。
 
 ```mermaid
 graph TB
@@ -156,7 +156,7 @@ class setupVitePlugins {
 - [build/plugins/index.ts](file://frontend/build/plugins/index.ts#L0-L25)
 
 ## 环境变量与动态构建
-PaiSmart 前端通过环境变量实现了高度的构建灵活性，允许为不同环境（开发、测试、生产）生成不同的构建输出。
+RAG知识库 前端通过环境变量实现了高度的构建灵活性，允许为不同环境（开发、测试、生产）生成不同的构建输出。
 
 ### 环境变量定义
 环境变量在 `src/typings/vite-env.d.ts` 中进行了类型定义，确保了类型安全。
@@ -279,4 +279,4 @@ cd docs && docker-compose up -d
   构建命令：`docker build --build-arg NODE_ENV=staging --build-arg VITE_BASE_URL=/staging/ -t paismart-frontend .`
 
 ## 结论
-为 PaiSmart 前端应用构建 Docker 镜像应采用多阶段构建策略。第一阶段使用 Node.js 镜像安装并缓存 `pnpm` 依赖；第二阶段在同一镜像中执行 `vite build` 生成 `dist` 目录；第三阶段使用轻量级的 `nginx:alpine` 镜像来托管 `dist` 目录中的静态资源。`vite.config.ts` 中的 `base` 配置通过 `VITE_BASE_URL` 环境变量动态控制资源路径，确保应用可以部署在不同的子路径下。通过合理使用 `.dockerignore`、层缓存和构建参数，可以显著优化构建过程。最终，构建好的前端镜像将与后端服务、数据库等组件一起，通过 `docker-compose` 进行统一部署和管理。
+为 RAG知识库 前端应用构建 Docker 镜像应采用多阶段构建策略。第一阶段使用 Node.js 镜像安装并缓存 `pnpm` 依赖；第二阶段在同一镜像中执行 `vite build` 生成 `dist` 目录；第三阶段使用轻量级的 `nginx:alpine` 镜像来托管 `dist` 目录中的静态资源。`vite.config.ts` 中的 `base` 配置通过 `VITE_BASE_URL` 环境变量动态控制资源路径，确保应用可以部署在不同的子路径下。通过合理使用 `.dockerignore`、层缓存和构建参数，可以显著优化构建过程。最终，构建好的前端镜像将与后端服务、数据库等组件一起，通过 `docker-compose` 进行统一部署和管理。

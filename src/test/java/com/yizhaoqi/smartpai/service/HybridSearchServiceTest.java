@@ -311,7 +311,7 @@ class HybridSearchServiceTest {
         properties.getKeyword().setMinimumShouldMatch("30%");
         properties.getKeyword().setPhraseBoost(1.5f);
 
-        Query keyword = service.keywordQuery("派聪明的混合检索用了哪两路召回");
+        Query keyword = service.keywordQuery("RAG知识库的混合检索用了哪两路召回");
 
         assertEquals("30%", keyword.bool().must().get(0).match().minimumShouldMatch());
         assertTrue(keyword.bool().should().get(0).isMatchPhrase());

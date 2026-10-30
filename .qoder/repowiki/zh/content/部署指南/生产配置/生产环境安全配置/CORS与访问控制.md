@@ -22,10 +22,10 @@
 9. [结论](#结论)
 
 ## 引言
-本文档详细说明了PaiSmart系统中基于Spring Security的安全配置机制，重点分析了`SecurityConfig`类中`configure(HttpSecurity http)`方法所定义的生产环境访问控制策略。文档涵盖了基于角色的访问控制（RBAC）的实现、CORS配置的安全设置、CSRF攻击的防范措施，以及预检请求和凭证传输的安全配置，旨在为前后端分离架构下的安全通信提供全面的技术指导。
+本文档详细说明了RAG知识库系统中基于Spring Security的安全配置机制，重点分析了`SecurityConfig`类中`configure(HttpSecurity http)`方法所定义的生产环境访问控制策略。文档涵盖了基于角色的访问控制（RBAC）的实现、CORS配置的安全设置、CSRF攻击的防范措施，以及预检请求和凭证传输的安全配置，旨在为前后端分离架构下的安全通信提供全面的技术指导。
 
 ## 项目结构
-PaiSmart项目采用典型的前后端分离架构。后端基于Spring Boot构建，核心安全配置位于`src/main/java/com/yizhaoqi/smartpai/config/`目录下。前端使用Vite构建，位于`frontend`目录。安全相关的配置文件（如`application-docker.yml`）位于`src/main/resources/`目录。
+RAG知识库项目采用典型的前后端分离架构。后端基于Spring Boot构建，核心安全配置位于`src/main/java/com/yizhaoqi/smartpai/config/`目录下。前端使用Vite构建，位于`frontend`目录。安全相关的配置文件（如`application-docker.yml`）位于`src/main/resources/`目录。
 
 ```mermaid
 graph TB
@@ -308,4 +308,4 @@ OrgTagAuthorizationFilter --> FileUploadRepository : "使用"
 - [proxy.ts](file://frontend/build/config/proxy.ts)
 
 ## 结论
-PaiSmart系统构建了一套完善的安全控制体系。通过`SecurityConfig`实现了基于URL路径和角色的粗粒度访问控制，并通过`JwtAuthenticationFilter`和`OrgTagAuthorizationFilter`实现了基于JWT的无状态认证和基于组织标签的细粒度数据授权。系统通过禁用CSRF保护和采用无状态会话来适应JWT认证模式。CORS问题通过前端代理解决，确保了开发环境下的跨域通信安全。整体设计清晰、安全且可扩展。
+RAG知识库系统构建了一套完善的安全控制体系。通过`SecurityConfig`实现了基于URL路径和角色的粗粒度访问控制，并通过`JwtAuthenticationFilter`和`OrgTagAuthorizationFilter`实现了基于JWT的无状态认证和基于组织标签的细粒度数据授权。系统通过禁用CSRF保护和采用无状态会话来适应JWT认证模式。CORS问题通过前端代理解决，确保了开发环境下的跨域通信安全。整体设计清晰、安全且可扩展。
