@@ -7,8 +7,8 @@ spring:
     time-zone: ${APP_TIMEZONE:Asia/Shanghai}
   datasource:
     url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/RAG?useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true}
-    username: ${SPRING_DATASOURCE_USERNAME:root}
-    password: ${SPRING_DATASOURCE_PASSWORD:}
+    username: root
+    password: RAG2025
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
@@ -78,7 +78,7 @@ minio:
 
 jwt:
   # 必须是 Base64 编码字符串
-  secret-key: ${JWT_SECRET_KEY:}
+  secret-key: WZws+bMENibWSLDke6W+k7ff3/MojEm5LqwDAecRDHw=
 
 admin:
   bootstrap:

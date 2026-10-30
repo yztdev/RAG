@@ -6,9 +6,9 @@ spring:
   jackson:
     time-zone: ${APP_TIMEZONE:Asia/Shanghai}
   datasource:
-    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/RAG知识库?useSSL=false&serverTimezone=Asia/Shanghai}
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/RAG?useSSL=false&serverTimezone=Asia/Shanghai}
     username: ${SPRING_DATASOURCE_USERNAME:root}
-    password: ${SPRING_DATASOURCE_PASSWORD:}
+    password: ${SPRING_DATASOURCE_PASSWORD:RAG2025}
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
@@ -107,7 +107,7 @@ file:
     pdf:
       engine: ${FILE_PARSING_PDF_ENGINE:liteparse}
     liteparse:
-      command: ${FILE_PARSING_LITEPARSE_COMMAND:lit}
+      command: C:/Users/yang/AppData/Roaming/npm/lit.cmd
       ocr-enabled: ${FILE_PARSING_LITEPARSE_OCR_ENABLED:true}
       ocr-language: ${FILE_PARSING_LITEPARSE_OCR_LANGUAGE:chi_sim+eng}
       tessdata-path: ${FILE_PARSING_LITEPARSE_TESSDATA_PATH:}

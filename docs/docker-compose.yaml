@@ -31,7 +31,7 @@ services:
       - /data/docker/minio/config:/root/.minio
     environment:
       MINIO_ROOT_USER: admin
-      MINIO_ROOT_PASSWORD: RAG知识库2025
+      MINIO_ROOT_PASSWORD: admin
     command: server /data --console-address ":19001" -address ":19000"
 
   redis:
@@ -121,7 +121,7 @@ services:
     volumes:
       - es-data:/usr/share/elasticsearch/data
     environment:
-      - ELASTIC_PASSWORD=RAG知识库2025
+      - ELASTIC_PASSWORD=admin
       - node.name=pai-smart-es01
       - discovery.type=single-node
       - xpack.license.self_generated.type=basic
