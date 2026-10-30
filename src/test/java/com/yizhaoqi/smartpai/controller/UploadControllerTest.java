@@ -1,0 +1,196 @@
+package com.yizhaoqi.smartpai.controller;
+
+import com.yizhaoqi.smartpai.config.KafkaConfig;
+import com.yizhaoqi.smartpai.model.FileUpload;
+import com.yizhaoqi.smartpai.model.OrganizationTag;
+import com.yizhaoqi.smartpai.repository.FileUploadRepository;
+import com.yizhaoqi.smartpai.service.FileTypeValidationService;
+import com.yizhaoqi.smartpai.service.ParseService;
+import com.yizhaoqi.smartpai.service.UploadService;
+import com.yizhaoqi.smartpai.service.UserService;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import com.yizhaoqi.smartpai.service.reliability.FileProcessingOutboxService;
+import org.springframework.mock.web.MockMultipartFile;
+import org.springframework.test.util.ReflectionTestUtils;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.*;
+
+class UploadControllerTest {
+
+    @Mock
+    private UploadService uploadService;
+
+    @Mock
+    private FileProcessingOutboxService fileProcessingOutboxService;
+
+    @Mock
+    private KafkaConfig kafkaConfig;
+
+    @Mock
+    private UserService userService;
+
+    @Mock
+    private FileUploadRepository fileUploadRepository;
+
+    @Mock
+    private FileTypeValidationService fileTypeValidationService;
+
+    @Mock
+    private ParseService parseService;
+
+    private UploadController uploadController;
+
+    @BeforeEach
+    void setUp() {
+        MockitoAnnotations.openMocks(this);
+        uploadController = new UploadController(uploadService);
+        ReflectionTestUtils.setField(uploadController, "kafkaConfig", kafkaConfig);
+        ReflectionTestUtils.setField(uploadController, "userService", userService);
+        ReflectionTestUtils.setField(uploadController, "fileUploadRepository", fileUploadRepository);
+        ReflectionTestUtils.setField(uploadController, "fileTypeValidationService", fileTypeValidationService);
+        ReflectionTestUtils.setField(uploadController, "parseService", parseService);
+        ReflectionTestUtils.setField(uploadController, "fileProcessingOutboxService", fileProcessingOutboxService);
+        when(fileTypeValidationService.getSupportedFileTypes()).thenReturn(Set.of("pdf"));
+    }
+
+    @Test
+    void testUploadChunkRejectsOversizedFileForNonAdmin() throws Exception {
+        MockMultipartFile file = new MockMultipartFile("file", "test.pdf", "application/pdf", "demo".getBytes());
+        OrganizationTag orgTag = new OrganizationTag();
+        orgTag.setTagId("TEAM_A");
+        orgTag.setUploadMaxSizeBytes(1024L * 1024L);
+
+        when(fileTypeValidationService.validateFileType("test.pdf"))
+                .thenReturn(new FileTypeValidationService.FileTypeValidationResult(true, "ok", "PDF文档", "pdf"));
+        when(userService.isAdminUser("1")).thenReturn(false);
+        when(userService.getOrganizationTag("TEAM_A")).thenReturn(orgTag);
+
+        var response = uploadController.uploadChunk(
+                "md5",
+                0,
+                2L * 1024 * 1024,
+                "test.pdf",
+                1,
+                "TEAM_A",
+                false,
+                file,
+                "1"
+        );
+
+        assertEquals(413, response.getStatusCode().value());
+        assertEquals(413, response.getBody().get("code"));
+        assertTrue(String.valueOf(response.getBody().get("message")).contains("不超过"));
+        verify(uploadService, never()).uploadChunk(anyString(), anyInt(), anyLong(), anyString(), any(), anyString(), anyBoolean(), anyString());
+    }
+
+    @Test
+    void testUploadChunkAllowsAdminToBypassOrgLimit() throws Exception {
+        MockMultipartFile file = new MockMultipartFile("file", "test.pdf", "application/pdf", "demo".getBytes());
+
+        when(fileTypeValidationService.validateFileType("test.pdf"))
+                .thenReturn(new FileTypeValidationService.FileTypeValidationResult(true, "ok", "PDF文档", "pdf"));
+        when(userService.isAdminUser("1")).thenReturn(true);
+        when(uploadService.getUploadedChunks("md5", "1")).thenReturn(List.of(0));
+        when(uploadService.getTotalChunks("md5", "1")).thenReturn(1);
+
+        var response = uploadController.uploadChunk(
+                "md5",
+                0,
+                20L * 1024 * 1024,
+                "test.pdf",
+                1,
+                "TEAM_A",
+                false,
+                file,
+                "1"
+        );
+
+        assertEquals(200, response.getStatusCode().value());
+        assertEquals(Map.of("uploaded", List.of(0), "progress", 100.0d), response.getBody().get("data"));
+        verify(uploadService).uploadChunk("md5", 0, 20L * 1024 * 1024, "test.pdf", file, "TEAM_A", false, "1");
+        verify(userService, never()).getOrganizationTag(anyString());
+    }
+
+    @Test
+    void testUploadChunkRejectsWhenLaterChunkExceedsOrgLimitEvenIfTotalSizeIsUnderreported() throws Exception {
+        MockMultipartFile file = new MockMultipartFile("file", "test.pdf", "application/pdf", "demo".getBytes());
+        OrganizationTag orgTag = new OrganizationTag();
+        orgTag.setTagId("TEAM_A");
+        orgTag.setUploadMaxSizeBytes(5L * 1024 * 1024L);
+
+        when(userService.isAdminUser("1")).thenReturn(false);
+        when(userService.getOrganizationTag("TEAM_A")).thenReturn(orgTag);
+
+        var response = uploadController.uploadChunk(
+                "md5",
+                1,
+                1024L,
+                "test.pdf",
+                2,
+                "TEAM_A",
+                false,
+                file,
+                "1"
+        );
+
+        assertEquals(413, response.getStatusCode().value());
+        verify(uploadService, never()).uploadChunk(anyString(), anyInt(), anyLong(), anyString(), any(), anyString(), anyBoolean(), anyString());
+    }
+
+    @Test
+    void testMergeFileReturnsExistingResultWhenAlreadyCompleted() throws Exception {
+        FileUpload fileUpload = new FileUpload();
+        fileUpload.setFileMd5("md5");
+        fileUpload.setFileName("test.pdf");
+        fileUpload.setUserId("1");
+        fileUpload.setStatus(FileUpload.STATUS_COMPLETED);
+
+        when(fileUploadRepository.findFirstByFileMd5AndUserIdOrderByCreatedAtDesc("md5", "1"))
+                .thenReturn(Optional.of(fileUpload));
+        when(uploadService.generateMergedObjectUrl("md5")).thenReturn("https://example.com/merged/md5");
+
+        var response = uploadController.mergeFile(new UploadController.MergeRequest("md5", "test.pdf"), "1");
+
+        assertEquals(200, response.getStatusCode().value());
+        assertEquals("文件已完成合并", response.getBody().get("message"));
+        assertEquals("https://example.com/merged/md5", ((Map<?, ?>) response.getBody().get("data")).get("object_url"));
+        verify(uploadService, never()).mergeChunks(anyString(), anyString(), anyString());
+        verify(fileProcessingOutboxService, never()).enqueueVectorization(any(), any(), anyBoolean());
+    }
+    @Test
+    void uploadRejectsUnassignedOrganizationBeforeWritingAnyChunk() throws Exception {
+        MockMultipartFile file = new MockMultipartFile("file", "test.pdf", "application/pdf", "demo".getBytes());
+        doThrow(new com.yizhaoqi.smartpai.exception.CustomException("只能上传到自己的空间或已加入的组织",
+                org.springframework.http.HttpStatus.FORBIDDEN))
+                .when(userService).validateUploadOrganization("1", "PRIVATE_other");
+        // Later chunks must be checked too, not just chunk zero.
+        var response = uploadController.uploadChunk("md5", 1, 20L, "test.pdf", 2,
+                "PRIVATE_other", false, file, "1");
+        assertEquals(403, response.getStatusCode().value());
+        verifyNoInteractions(uploadService);
+    }
+
+    @Test
+    void implicitPrimaryOrganizationIsAlsoCheckedBeforeUploading() throws Exception {
+        MockMultipartFile file = new MockMultipartFile("file", "test.pdf", "application/pdf", "demo".getBytes());
+        when(userService.getUserPrimaryOrg("1")).thenReturn("REMOVED_TEAM");
+        doThrow(new com.yizhaoqi.smartpai.exception.CustomException("组织未分配",
+                org.springframework.http.HttpStatus.FORBIDDEN))
+                .when(userService).validateUploadOrganization("1", "REMOVED_TEAM");
+        var response = uploadController.uploadChunk("md5", 1, 20L, "test.pdf", 2,
+                null, false, file, "1");
+        assertEquals(403, response.getStatusCode().value());
+        verifyNoInteractions(uploadService);
+    }
+
+}

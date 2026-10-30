@@ -1,0 +1,138 @@
+@forward "scrollbar";
+
+// Shared surfaces and readable text for both application themes.
+:root {
+  --app-surface: rgb(var(--container-bg-color));
+  --app-text: rgb(var(--base-text-color));
+  --app-muted: rgb(var(--base-text-color) / 0.68);
+  --app-subtle: rgb(var(--base-text-color) / 0.055);
+  --app-border: rgb(var(--base-text-color) / 0.1);
+}
+
+.text-muted {
+  color: var(--app-muted);
+}
+.text-body {
+  color: var(--app-text);
+}
+.surface-subtle {
+  background: var(--app-subtle);
+}
+
+.workspace-page {
+  min-width: 0;
+  gap: 24px;
+}
+
+.page-section.n-card {
+  border: 0;
+  border-radius: 12px;
+  box-shadow: none;
+  background: var(--app-surface);
+
+  > .n-card-header {
+    padding: 24px 28px 20px;
+    gap: 16px;
+    flex-wrap: wrap;
+
+    .n-card-header__main {
+      font-size: 18px;
+      font-weight: 600;
+    }
+  }
+
+  > .n-card__content {
+    padding: 0 28px 28px;
+  }
+  > .n-card__footer {
+    padding: 24px 28px 28px;
+  }
+}
+
+.workspace-page .n-data-table {
+  --n-border-radius: 8px;
+
+  .n-data-table-th {
+    padding: 12px 16px;
+    font-weight: 500;
+  }
+  .n-data-table-td {
+    padding: 14px 16px;
+  }
+}
+
+.workspace-page .page-filters.n-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  margin-bottom: 24px;
+
+  .n-form-item {
+    margin-right: 0;
+  }
+}
+
+.n-dialog {
+  max-width: calc(100vw - 32px);
+}
+
+@media (max-width: 640px) {
+  .page-section.n-card > .n-card-header > .n-card-header__main {
+    flex-basis: 100%;
+  }
+  .page-section.n-card > .n-card-header > .n-card-header__extra {
+    max-width: 100%;
+  }
+
+  .workspace-page {
+    gap: 16px;
+  }
+  .page-section.n-card {
+    > .n-card-header {
+      padding: 20px 20px 16px;
+    }
+    > .n-card__content {
+      padding: 0 20px 20px;
+    }
+    > .n-card__footer {
+      padding: 20px;
+    }
+  }
+  .workspace-page .page-filters.n-form {
+    gap: 12px;
+    .n-form-item {
+      width: 100%;
+      min-width: 0;
+      grid-template-columns: 72px minmax(0, 1fr);
+    }
+    .n-form-item-blank {
+      min-width: 0;
+    }
+    .n-input,
+    .n-select,
+    .n-date-picker,
+    .n-cascader {
+      width: 100% !important;
+      min-width: 0;
+    }
+  }
+  .workspace-page .n-data-table {
+    .n-data-table-th,
+    .n-data-table-td {
+      padding: 12px;
+    }
+  }
+}
+
+.filter-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+}
+@media (max-width: 640px) {
+  .filter-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}

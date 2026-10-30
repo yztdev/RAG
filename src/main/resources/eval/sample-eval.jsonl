@@ -1,0 +1,7 @@
+# 示例评测集：针对启动时导入的 docs/paismart.pdf。每行一个用例，# 开头的行是注释。
+# expectedFileMd5s 与 expectedFileNames 至少填一个才会计算 Recall@K / MRR；两者都不填时只评估回答。
+{"id": "stack-springboot", "question": "派聪明基于哪个版本的 Spring Boot，使用哪个 Java 版本？", "expectedFileNames": ["paismart.pdf"], "referenceAnswer": "派聪明基于 Spring Boot 3.4.2，使用 Java 17（JDK 17）开发。"}
+{"id": "stack-kafka-minio", "question": "派聪明里 Kafka、Redis 和 MinIO 分别用来做什么？", "expectedFileNames": ["paismart.pdf"], "referenceAnswer": "Kafka 用于异步任务调度，Redis 用于缓存和对话上下文（多轮对话记忆）管理，MinIO 用于大文件分片上传与断点续传。"}
+{"id": "pipeline", "question": "派聪明处理一份上传文档的流程是什么？", "expectedFileNames": ["paismart.pdf"], "referenceAnswer": "文档先解析并分块，再批量向量化，然后构建带权限信息的文档对象，最后批量写入 Elasticsearch。"}
+{"id": "hybrid-search", "question": "派聪明为什么同时保留关键词检索和语义检索？", "expectedFileNames": ["paismart.pdf"], "referenceAnswer": "语义检索解决了关键词匹配查不到同义表达的问题，但精确关键词查询的场景依然存在，所以派聪明在 Elasticsearch 上同时提供关键词检索和语义检索。"}
+{"id": "realtime", "question": "派聪明通过什么技术把大模型生成的内容实时推送给前端？", "expectedFileNames": ["paismart.pdf"], "referenceAnswer": "通过 WebSocket 实现实时通信，把大模型的流式输出逐步推送给前端。"}
